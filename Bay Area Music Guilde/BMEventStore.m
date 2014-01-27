@@ -65,16 +65,8 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
         
-        for (NSDictionary* jsonObj in json) {
-            NSDictionary* eventDictionary = nil;
-            if ([jsonObj isKindOfClass:[NSString class]]) {
-                NSString* eventDictString = (NSString*)jsonObj;
-                eventDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:[eventDictString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-            } else {
-                eventDictionary = jsonObj;
-            }
-            
-            
+        for (NSDictionary *eventDictionary in json) {
+
             NSNumber *serverId = eventDictionary[@"id"];
             eventFetchRequest.predicate = [NSPredicate predicateWithFormat:@"serverId == %@",serverId];
             NSError *error = nil;
