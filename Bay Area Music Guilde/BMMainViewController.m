@@ -7,9 +7,10 @@
 //
 
 #import "BMMainViewController.h"
+#import "BMEventStore.h"
 
 @interface BMMainViewController ()
-
+@property (strong, nonatomic) BMEventStore *store;
 @end
 
 @implementation BMMainViewController
@@ -18,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.store = [[BMEventStore alloc] init];
+    [self.store getEventsWithCompletion:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
