@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
+		FA89D0FA1895F022006DB239 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F91895F022006DB239 /* CoreGraphics.framework */; };
+		FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
+		FA89D0FE1895F022006DB239 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FD1895F022006DB239 /* CoreData.framework */; };
+		FA89D1041895F022006DB239 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA89D1021895F022006DB239 /* InfoPlist.strings */; };
+		FA89D1061895F022006DB239 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1051895F022006DB239 /* main.m */; };
+		FA89D10A1895F022006DB239 /* BMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1091895F022006DB239 /* BMAppDelegate.m */; };
+		FA89D10D1895F022006DB239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA89D10B1895F022006DB239 /* Main.storyboard */; };
+		FA89D1101895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */; };
+		FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1121895F022006DB239 /* BMMainViewController.m */; };
+		FA89D1161895F022006DB239 /* BMFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1151895F022006DB239 /* BMFlipsideViewController.m */; };
+		FA89D1181895F022006DB239 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA89D1171895F022006DB239 /* Images.xcassets */; };
+		FA89D11F1895F022006DB239 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D11E1895F022006DB239 /* XCTest.framework */; };
+		FA89D1201895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
+		FA89D1211895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
+		FA89D1221895F022006DB239 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FD1895F022006DB239 /* CoreData.framework */; };
+		FA89D12A1895F022006DB239 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA89D1281895F022006DB239 /* InfoPlist.strings */; };
+		FA89D12C1895F022006DB239 /* Bay_Area_Music_GuildeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA89D1231895F022006DB239 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA89D0EC1895F022006DB239 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA89D0F31895F022006DB239;
+			remoteInfo = "Bay Area Music Guilde";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bay Area Music Guilde.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA89D0F71895F022006DB239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA89D0F91895F022006DB239 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA89D0FB1895F022006DB239 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA89D0FD1895F022006DB239 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FA89D1011895F022006DB239 /* Bay Area Music Guilde-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bay Area Music Guilde-Info.plist"; sourceTree = "<group>"; };
+		FA89D1031895F022006DB239 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA89D1051895F022006DB239 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA89D1071895F022006DB239 /* Bay Area Music Guilde-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bay Area Music Guilde-Prefix.pch"; sourceTree = "<group>"; };
+		FA89D1081895F022006DB239 /* BMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMAppDelegate.h; sourceTree = "<group>"; };
+		FA89D1091895F022006DB239 /* BMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMAppDelegate.m; sourceTree = "<group>"; };
+		FA89D10C1895F022006DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA89D10F1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bay_Area_Music_Guilde.xcdatamodel; sourceTree = "<group>"; };
+		FA89D1111895F022006DB239 /* BMMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMMainViewController.h; sourceTree = "<group>"; };
+		FA89D1121895F022006DB239 /* BMMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMMainViewController.m; sourceTree = "<group>"; };
+		FA89D1141895F022006DB239 /* BMFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMFlipsideViewController.h; sourceTree = "<group>"; };
+		FA89D1151895F022006DB239 /* BMFlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMFlipsideViewController.m; sourceTree = "<group>"; };
+		FA89D1171895F022006DB239 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA89D11D1895F022006DB239 /* Bay Area Music GuildeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bay Area Music GuildeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA89D11E1895F022006DB239 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FA89D1271895F022006DB239 /* Bay Area Music GuildeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bay Area Music GuildeTests-Info.plist"; sourceTree = "<group>"; };
+		FA89D1291895F022006DB239 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bay_Area_Music_GuildeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA89D0F11895F022006DB239 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D0FA1895F022006DB239 /* CoreGraphics.framework in Frameworks */,
+				FA89D0FE1895F022006DB239 /* CoreData.framework in Frameworks */,
+				FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */,
+				FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA89D11A1895F022006DB239 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D11F1895F022006DB239 /* XCTest.framework in Frameworks */,
+				FA89D1221895F022006DB239 /* CoreData.framework in Frameworks */,
+				FA89D1211895F022006DB239 /* UIKit.framework in Frameworks */,
+				FA89D1201895F022006DB239 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA89D0EB1895F022006DB239 = {
+			isa = PBXGroup;
+			children = (
+				FA89D0FF1895F022006DB239 /* Bay Area Music Guilde */,
+				FA89D1251895F022006DB239 /* Bay Area Music GuildeTests */,
+				FA89D0F61895F022006DB239 /* Frameworks */,
+				FA89D0F51895F022006DB239 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA89D0F51895F022006DB239 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */,
+				FA89D11D1895F022006DB239 /* Bay Area Music GuildeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA89D0F61895F022006DB239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D0F71895F022006DB239 /* Foundation.framework */,
+				FA89D0F91895F022006DB239 /* CoreGraphics.framework */,
+				FA89D0FB1895F022006DB239 /* UIKit.framework */,
+				FA89D0FD1895F022006DB239 /* CoreData.framework */,
+				FA89D11E1895F022006DB239 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA89D0FF1895F022006DB239 /* Bay Area Music Guilde */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D1081895F022006DB239 /* BMAppDelegate.h */,
+				FA89D1091895F022006DB239 /* BMAppDelegate.m */,
+				FA89D10B1895F022006DB239 /* Main.storyboard */,
+				FA89D1111895F022006DB239 /* BMMainViewController.h */,
+				FA89D1121895F022006DB239 /* BMMainViewController.m */,
+				FA89D1141895F022006DB239 /* BMFlipsideViewController.h */,
+				FA89D1151895F022006DB239 /* BMFlipsideViewController.m */,
+				FA89D1171895F022006DB239 /* Images.xcassets */,
+				FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */,
+				FA89D1001895F022006DB239 /* Supporting Files */,
+			);
+			path = "Bay Area Music Guilde";
+			sourceTree = "<group>";
+		};
+		FA89D1001895F022006DB239 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D1011895F022006DB239 /* Bay Area Music Guilde-Info.plist */,
+				FA89D1021895F022006DB239 /* InfoPlist.strings */,
+				FA89D1051895F022006DB239 /* main.m */,
+				FA89D1071895F022006DB239 /* Bay Area Music Guilde-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA89D1251895F022006DB239 /* Bay Area Music GuildeTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */,
+				FA89D1261895F022006DB239 /* Supporting Files */,
+			);
+			path = "Bay Area Music GuildeTests";
+			sourceTree = "<group>";
+		};
+		FA89D1261895F022006DB239 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA89D1271895F022006DB239 /* Bay Area Music GuildeTests-Info.plist */,
+				FA89D1281895F022006DB239 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA89D0F31895F022006DB239 /* Bay Area Music Guilde */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA89D12F1895F022006DB239 /* Build configuration list for PBXNativeTarget "Bay Area Music Guilde" */;
+			buildPhases = (
+				FA89D0F01895F022006DB239 /* Sources */,
+				FA89D0F11895F022006DB239 /* Frameworks */,
+				FA89D0F21895F022006DB239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bay Area Music Guilde";
+			productName = "Bay Area Music Guilde";
+			productReference = FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA89D11C1895F022006DB239 /* Bay Area Music GuildeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA89D1321895F022006DB239 /* Build configuration list for PBXNativeTarget "Bay Area Music GuildeTests" */;
+			buildPhases = (
+				FA89D1191895F022006DB239 /* Sources */,
+				FA89D11A1895F022006DB239 /* Frameworks */,
+				FA89D11B1895F022006DB239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA89D1241895F022006DB239 /* PBXTargetDependency */,
+			);
+			name = "Bay Area Music GuildeTests";
+			productName = "Bay Area Music GuildeTests";
+			productReference = FA89D11D1895F022006DB239 /* Bay Area Music GuildeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA89D0EC1895F022006DB239 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BM;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Exactly what it sounds like";
+				TargetAttributes = {
+					FA89D11C1895F022006DB239 = {
+						TestTargetID = FA89D0F31895F022006DB239;
+					};
+				};
+			};
+			buildConfigurationList = FA89D0EF1895F022006DB239 /* Build configuration list for PBXProject "Bay Area Music Guilde" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA89D0EB1895F022006DB239;
+			productRefGroup = FA89D0F51895F022006DB239 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA89D0F31895F022006DB239 /* Bay Area Music Guilde */,
+				FA89D11C1895F022006DB239 /* Bay Area Music GuildeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA89D0F21895F022006DB239 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D1181895F022006DB239 /* Images.xcassets in Resources */,
+				FA89D1041895F022006DB239 /* InfoPlist.strings in Resources */,
+				FA89D10D1895F022006DB239 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA89D11B1895F022006DB239 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D12A1895F022006DB239 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA89D0F01895F022006DB239 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */,
+				FA89D1161895F022006DB239 /* BMFlipsideViewController.m in Sources */,
+				FA89D1061895F022006DB239 /* main.m in Sources */,
+				FA89D10A1895F022006DB239 /* BMAppDelegate.m in Sources */,
+				FA89D1101895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA89D1191895F022006DB239 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA89D12C1895F022006DB239 /* Bay_Area_Music_GuildeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA89D1241895F022006DB239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA89D0F31895F022006DB239 /* Bay Area Music Guilde */;
+			targetProxy = FA89D1231895F022006DB239 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA89D1021895F022006DB239 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA89D1031895F022006DB239 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA89D10B1895F022006DB239 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA89D10C1895F022006DB239 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA89D1281895F022006DB239 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA89D1291895F022006DB239 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA89D12D1895F022006DB239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FA89D12E1895F022006DB239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA89D1301895F022006DB239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";
+				INFOPLIST_FILE = "Bay Area Music Guilde/Bay Area Music Guilde-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA89D1311895F022006DB239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";
+				INFOPLIST_FILE = "Bay Area Music Guilde/Bay Area Music Guilde-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FA89D1331895F022006DB239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bay Area Music Guilde.app/Bay Area Music Guilde";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Bay Area Music GuildeTests/Bay Area Music GuildeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FA89D1341895F022006DB239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bay Area Music Guilde.app/Bay Area Music Guilde";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";
+				INFOPLIST_FILE = "Bay Area Music GuildeTests/Bay Area Music GuildeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA89D0EF1895F022006DB239 /* Build configuration list for PBXProject "Bay Area Music Guilde" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA89D12D1895F022006DB239 /* Debug */,
+				FA89D12E1895F022006DB239 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA89D12F1895F022006DB239 /* Build configuration list for PBXNativeTarget "Bay Area Music Guilde" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA89D1301895F022006DB239 /* Debug */,
+				FA89D1311895F022006DB239 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA89D1321895F022006DB239 /* Build configuration list for PBXNativeTarget "Bay Area Music GuildeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA89D1331895F022006DB239 /* Debug */,
+				FA89D1341895F022006DB239 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA89D10F1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodel */,
+			);
+			currentVersion = FA89D10F1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodel */;
+			path = Bay_Area_Music_Guilde.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FA89D0EC1895F022006DB239 /* Project object */;
+}
