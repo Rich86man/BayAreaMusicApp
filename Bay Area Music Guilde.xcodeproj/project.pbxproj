@@ -126,6 +126,7 @@
 		FA89D1881895F688006DB239 /* BMVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVenue.m; sourceTree = "<group>"; };
 		FA89D18A1895F688006DB239 /* BMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMArtist.h; sourceTree = "<group>"; };
 		FA89D18B1895F688006DB239 /* BMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMArtist.m; sourceTree = "<group>"; };
+		FA89D18D189C8A6A006DB239 /* BMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMBaseModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */,
+				FA89D18D189C8A6A006DB239 /* BMBaseModel.h */,
 				FA89D18A1895F688006DB239 /* BMArtist.h */,
 				FA89D18B1895F688006DB239 /* BMArtist.m */,
 				FA89D1871895F688006DB239 /* BMVenue.h */,

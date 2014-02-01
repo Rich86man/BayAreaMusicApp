@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BMBaseModel.h"
 
 @class BMEvent;
 
-@interface BMVenue : NSManagedObject
+@interface BMVenue : NSManagedObject <BMBaseModel>
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * serverId;

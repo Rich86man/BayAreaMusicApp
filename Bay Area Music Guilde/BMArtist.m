@@ -16,4 +16,11 @@
 @dynamic serverId;
 @dynamic events;
 
+
+- (void)updateWithDictionary:(NSDictionary *)dict
+{
+    self.name = dict[@"name"];
+    self.serverId = dict[@"id"];
+}
+
 @end

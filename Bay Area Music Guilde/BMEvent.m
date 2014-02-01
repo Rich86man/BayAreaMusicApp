@@ -10,7 +10,6 @@
 #import "BMArtist.h"
 #import "BMVenue.h"
 
-
 @implementation BMEvent
 
 @dynamic date;
@@ -18,5 +17,19 @@
 @dynamic serverId;
 @dynamic venue;
 @dynamic artists;
+
+static NSDateFormatter *dateFormatter;
+
+- (void)updateWithDictionary:(NSDictionary *)dict
+{
+    if(!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    }
+
+    self.serverId = dict[@"id"];
+    self.date = [dateFormatter dateFromString:dict[@"event_date"]];
+    self.price = dict[@"price"];
+}
 
 @end

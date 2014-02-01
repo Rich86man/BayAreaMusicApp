@@ -13,6 +13,7 @@
 #import "BMArtist.h"
 #import "BMVenue.h"
 #import "RKCoreDataStore.h"
+#import "BMBaseModel.h"
 
 static NSString * baseUrl = @"http://nameless-mountain-3360.herokuapp.com";
 static NSString * localBaseUrl = @"http://localhost:4567";
@@ -42,14 +43,6 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
 }
 
-- (BOOL)wordIsAMonth:(NSString*)word
-{
-    return [word isEqualToString:@"jan"] || [word isEqualToString:@"feb"] || [word isEqualToString:@"mar"] ||
-    [word isEqualToString:@"june"] || [word isEqualToString:@"jul"] || [word isEqualToString:@"aug"] ||
-    [word isEqualToString:@"sep"] || [word isEqualToString:@"oct"]  || [word isEqualToString:@"nov"] ||
-    [word isEqualToString:@"dec"];
-}
-
 
 // TODO : Do this on a bg queue
 - (void)parseJson:(id)json
@@ -59,28 +52,14 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
         NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
-        NSFetchRequest *eventFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
-        eventFetchRequest.fetchLimit = 1;
-
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
         
         for (NSDictionary *eventDictionary in json) {
 
-            NSNumber *serverId = eventDictionary[@"id"];
-            eventFetchRequest.predicate = [NSPredicate predicateWithFormat:@"serverId == %@",serverId];
-            NSError *error = nil;
-            NSArray *results = [bgContext executeFetchRequest:eventFetchRequest error:&error];
-            
-            if (error) { NSLog(@"Error looking up artist : %@",error); }
-            if (results) { continue; }
-            
-            BMEvent *event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:bgContext];
-            event.serverId = serverId;
-            
-            if (eventDictionary[@"event_date"]) { event.date = [dateFormatter dateFromString:eventDictionary[@"event_date"]]; }
-            if (eventDictionary[@"price"]) { event.price = eventDictionary[@"price"]; }
-            if (eventDictionary[@"venue"]) { event.venue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext]; }
+            BMEvent *event = [self findOrCreateEventFromDict:eventDictionary withContext:bgContext];
+
+            if (eventDictionary[@"venue"]) {
+                event.venue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
+            }
 
             for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
                 BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
@@ -92,8 +71,30 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         if (error) { NSLog(@"Error saving db after parsing : %@", error); }
         else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
     });
+}
+
+
+- (BMEvent *)findOrCreateEventFromDict:(NSDictionary*)dict withContext:(NSManagedObjectContext*)context
+{
+    NSNumber* serverId = dict[@"id"];
     
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
+    request.fetchLimit = 1;
+    request.predicate = [NSPredicate predicateWithFormat:@"serverId == %@", serverId];
     
+    NSError* error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    if (error) { NSLog(@"Error looking up Event : %@",error); }
+    if (results) {
+        id <BMBaseModel> object = results[0];
+        [object updateWithDictionary:dict];
+        return object;
+    }
+    
+    BMEvent *event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:context];
+    [event updateWithDictionary:dict];
+    return event;
 }
 
 
@@ -109,11 +110,13 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) { NSLog(@"Error looking up artist : %@",error); }
-    if (results) { return results[0]; }
-    
+    if (results) {
+        id <BMBaseModel> object = results[0];
+        [object updateWithDictionary:dict];
+        return object;
+    }
     BMArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:@"BMArtist" inManagedObjectContext:context];
-    artist.serverId = serverId;
-    artist.name = dict[@"name"];
+    [artist updateWithDictionary:dict];
     
     return artist;
 }
@@ -131,11 +134,14 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) { NSLog(@"Error looking up venue : %@",error); }
-    if (results) { return results[0]; }
+    if (results) {
+        id <BMBaseModel> object = results[0];
+        [object updateWithDictionary:dict];
+        return object;
+    }
     
     BMVenue *venue = [NSEntityDescription insertNewObjectForEntityForName:@"BMVenue" inManagedObjectContext:context];
-    venue.serverId = serverId;
-    venue.name = dict[@"name"];
+    [venue updateWithDictionary:dict];
     
     return venue;
 }

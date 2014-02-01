@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BMBaseModel.h"
 
 @class BMArtist, BMVenue;
 
-@interface BMEvent : NSManagedObject
+@interface BMEvent : NSManagedObject <BMBaseModel>
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * price;
