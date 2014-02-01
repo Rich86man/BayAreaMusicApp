@@ -6,12 +6,20 @@
 //  Copyright (c) 2014 Exactly what it sounds like. All rights reserved.
 //
 
-#import "BMFlipsideViewController.h"
+#import "BMEventStore.h"
+#import "BMDatesViewController.h"
+#import "BMVenuesViewController.h"
+#import "BMLocationsViewController.h"
 
 #import <CoreData/CoreData.h>
 
-@interface BMMainViewController : UIViewController <BMFlipsideViewControllerDelegate>
+@interface BMMainViewController : UIViewController
+@property (strong, nonatomic) BMEventStore *store;
+@property (strong, nonatomic) BMDatesViewController *datesController;
+@property (strong, nonatomic) BMVenuesViewController *venuesController;
+@property (strong, nonatomic) BMLocationsViewController *locationsController;
+@property (weak, nonatomic) IBOutlet UIView *buttonsView;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
+- (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
+- (void)hideChildController;
 @end

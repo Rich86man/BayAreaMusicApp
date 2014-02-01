@@ -19,6 +19,8 @@
 @property (nonatomic, retain) NSNumber * serverId;
 @property (nonatomic, retain) BMVenue *venue;
 @property (nonatomic, retain) NSSet *artists;
+
+- (NSString*)artistsString;
 @end
 
 @interface BMEvent (CoreDataGeneratedAccessors)

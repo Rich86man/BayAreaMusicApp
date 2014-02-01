@@ -23,7 +23,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 - (AFHTTPRequestOperationManager *)client
 {
     if(!_client) {
-        _client = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:localBaseUrl]];
+        _client = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
         _client.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return _client;
@@ -70,6 +70,13 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         [bgContext save:&error];
         if (error) { NSLog(@"Error saving db after parsing : %@", error); }
         else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
+        
+        dispatch_sync( dispatch_get_main_queue() , ^( void ) {
+            NSLog(@"saving main context");
+            NSError *error = nil;
+            [[[RKCoreDataStore sharedStore] managedObjectContext] save:&error];
+            NSLog(@"saved main context %@", error ? error : @"");
+        } );
     });
 }
 
@@ -86,7 +93,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) { NSLog(@"Error looking up Event : %@",error); }
-    if (results) {
+    if (results.count > 1) {
         id <BMBaseModel> object = results[0];
         [object updateWithDictionary:dict];
         return object;
@@ -110,7 +117,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) { NSLog(@"Error looking up artist : %@",error); }
-    if (results) {
+    if (results.count > 1) {
         id <BMBaseModel> object = results[0];
         [object updateWithDictionary:dict];
         return object;
@@ -134,7 +141,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSArray *results = [context executeFetchRequest:request error:&error];
     
     if (error) { NSLog(@"Error looking up venue : %@",error); }
-    if (results) {
+    if (results.count > 1) {
         id <BMBaseModel> object = results[0];
         [object updateWithDictionary:dict];
         return object;

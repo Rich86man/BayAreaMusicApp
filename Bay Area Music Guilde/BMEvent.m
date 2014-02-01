@@ -28,8 +28,21 @@ static NSDateFormatter *dateFormatter;
     }
 
     self.serverId = dict[@"id"];
-    self.date = [dateFormatter dateFromString:dict[@"event_date"]];
-    self.price = dict[@"price"];
+    if (dateFormatter && dict[@"event_date"]) {
+        self.date = [dateFormatter dateFromString:dict[@"event_date"]];
+    }
+    self.price = [dict[@"price"] class] != [NSNull class] ? dict[@"price"] : nil;
+}
+
+
+- (NSString *)artistsString
+{
+    NSMutableString *string = [NSMutableString string];
+    for (BMArtist *artist in self.artists) {
+        [string appendFormat:@"%@, ", artist.name];
+    }
+    [string replaceCharactersInRange:NSMakeRange(string.length -3, 2) withString:@""];
+    return string;
 }
 
 @end
