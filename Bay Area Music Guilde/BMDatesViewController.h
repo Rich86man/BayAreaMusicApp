@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *artistsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
++ (CGFloat)heightWithText:(NSString*)text;
++ (CGFloat)baseHeight;
 
 @end
 

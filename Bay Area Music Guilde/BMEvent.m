@@ -39,9 +39,8 @@ static NSDateFormatter *dateFormatter;
 {
     NSMutableString *string = [NSMutableString string];
     for (BMArtist *artist in self.artists) {
-        [string appendFormat:@"%@, ", artist.name];
+        [string appendFormat:@"%@\n", artist.name];
     }
-    [string replaceCharactersInRange:NSMakeRange(string.length -3, 2) withString:@""];
     return string;
 }
 

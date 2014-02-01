@@ -12,6 +12,10 @@
 #import "BMEvent.h"
 #import "BMVenue.h"
 #import "BMArtist.h"
+#import "UILabel+Extras.h"
+#import "NSDate+BM.h"
+
+static CGFloat baseHeight = 75;
 
 @implementation BMDateTableViewCell
 
@@ -23,6 +27,29 @@
 - (IBAction)buttonPressed:(UIButton *)sender
 {
     
+}
+
++ (CGFloat)heightWithText:(NSString*)text
+{
+    static CGSize baseLabelSize = {225, 20};
+    static UIFont *font = nil;
+    if (!font) {
+        font = [UIFont fontWithName:@"HelveticaNeue-MediumItalic" size:14];
+    }
+    CGFloat dynamicHeight = [text boundingRectWithSize:CGSizeMake(baseLabelSize.width, 9999)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{NSFontAttributeName: font}
+                                               context:nil].size.height;
+
+    if (dynamicHeight <= baseLabelSize.height) {
+        return baseHeight;
+    }
+    return baseHeight - baseLabelSize.height + dynamicHeight + 10;
+}
+
++ (CGFloat)baseHeight
+{
+    return baseHeight;
 }
 
 @end
@@ -47,6 +74,8 @@
     if (!_fetchController) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",[NSDate oneWeekAgoFromToday], [NSDate oneWeekFromToday]];
+        request.predicate = predicate;
         _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                managedObjectContext:[[RKCoreDataStore sharedStore] managedObjectContext]
                                                                  sectionNameKeyPath:@"date"
@@ -81,6 +110,18 @@
     return cell;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return baseHeight;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BMEvent *event = self.fetchController.fetchedObjects[indexPath.row];
+    return [BMDateTableViewCell heightWithText:event.artistsString];
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

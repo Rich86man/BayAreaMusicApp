@@ -53,6 +53,8 @@
 		FA89D1A0189D7F84006DB239 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D19F189D7F84006DB239 /* Security.framework */; };
 		FA89D1A2189D7F8E006DB239 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D1A1189D7F8E006DB239 /* SystemConfiguration.framework */; };
 		FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */; };
+		FAB9CA6F189D9FE600208220 /* UILabel+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */; };
+		FAB9CA75189DA2A300208220 /* NSDate+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA74189DA2A300208220 /* NSDate+BM.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,10 @@
 		FA89D1A1189D7F8E006DB239 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FAB9CA6A189D969300208220 /* BMFetchResultsControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMFetchResultsControllerViewController.h; sourceTree = "<group>"; };
 		FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMFetchResultsControllerViewController.m; sourceTree = "<group>"; };
+		FAB9CA6D189D9FE600208220 /* UILabel+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extras.h"; sourceTree = "<group>"; };
+		FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extras.m"; sourceTree = "<group>"; };
+		FAB9CA73189DA2A300208220 /* NSDate+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BM.h"; sourceTree = "<group>"; };
+		FAB9CA74189DA2A300208220 /* NSDate+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,8 +332,12 @@
 		FA89D17A1895F1C9006DB239 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				FAB9CA6D189D9FE600208220 /* UILabel+Extras.h */,
+				FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */,
 				FA89D19C189D7C34006DB239 /* CGRect+Utils */,
 				FA89D1631895F1C5006DB239 /* UIKit+AFNetworking */,
+				FAB9CA73189DA2A300208220 /* NSDate+BM.h */,
+				FAB9CA74189DA2A300208220 /* NSDate+BM.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -470,6 +480,7 @@
 				FA89D15B1895F1B9006DB239 /* AFHTTPRequestOperationManager.m in Sources */,
 				FA89D1791895F1C5006DB239 /* UIWebView+AFNetworking.m in Sources */,
 				FA89D1761895F1C5006DB239 /* UIButton+AFNetworking.m in Sources */,
+				FAB9CA6F189D9FE600208220 /* UILabel+Extras.m in Sources */,
 				FA89D1741895F1C5006DB239 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FA89D1061895F022006DB239 /* main.m in Sources */,
 				FA89D1451895F1A6006DB239 /* BMEventStore.m in Sources */,
@@ -487,6 +498,7 @@
 				FA89D1101895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld in Sources */,
 				FA89D15A1895F1B9006DB239 /* AFHTTPRequestOperation.m in Sources */,
 				FA89D15C1895F1B9006DB239 /* AFHTTPSessionManager.m in Sources */,
+				FAB9CA75189DA2A300208220 /* NSDate+BM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
