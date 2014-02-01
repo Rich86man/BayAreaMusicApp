@@ -18,8 +18,14 @@
 @property (strong, nonatomic) BMDatesViewController *datesController;
 @property (strong, nonatomic) BMVenuesViewController *venuesController;
 @property (strong, nonatomic) BMLocationsViewController *locationsController;
+@property (weak, nonatomic) IBOutlet UIButton *datesButton;
+@property (weak, nonatomic) IBOutlet UIButton *artistsButton;
+@property (weak, nonatomic) IBOutlet UIButton *venuesButton;
 @property (weak, nonatomic) IBOutlet UIView *buttonsView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
 - (void)hideChildController;
+- (void)setSelectedExclusive:(UIButton*)button;
 @end
