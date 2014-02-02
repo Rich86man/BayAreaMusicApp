@@ -1,15 +1,7 @@
-//
-//  LNBlurView.m
-//  learnist-ios
-//
-//  Created by Grockit on 11/20/13.
-//  Copyright (c) 2013 Learnist. All rights reserved.
-//
-
-#import "LNBlurView.h"
+#import "BMBlurredView.h"
 #import <Accelerate/Accelerate.h>
 
-@interface LNBlurView ()
+@interface BMBlurredView ()
 {
     CGContextRef _effectInContext;
     CGContextRef _effectOutContext;
@@ -23,7 +15,7 @@
 @end
 
 
-@implementation LNBlurView
+@implementation BMBlurredView
 
 - (id)initWithFrame:(CGRect)frame
 {

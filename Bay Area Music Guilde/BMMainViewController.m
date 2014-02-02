@@ -107,7 +107,7 @@
     group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
     
     // Add both effects to your view
-    self.blurView = [[LNBlurView alloc] initWithFrame:self.backgroundImageView.bounds];
+    self.blurView = [[BMBlurredView alloc] initWithFrame:self.backgroundImageView.bounds];
     [self.backgroundImageView addSubview:self.blurView];
     self.blurView.alpha = 0.0f;
     
@@ -169,7 +169,7 @@
 
 - (void)viewController:(UIViewController *)controller wantsToViewEvent:(BMEvent *)event
 {
-    LNBlurView * blurView = [[LNBlurView alloc] initWithFrame:self.view.bounds];
+    BMBlurredView * blurView = [[BMBlurredView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:blurView];
     [blurView redraw];
     [blurView setTag:4567];
@@ -196,7 +196,7 @@
 
 - (void)hideEventSummaryViewController:(id)sender
 {
-    LNBlurView *blurView = (LNBlurView*)[self.view viewWithTag:4567];
+    BMBlurredView *blurView = (BMBlurredView*)[self.view viewWithTag:4567];
     
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.eventSummaryController.view.alpha = 0.0f;
