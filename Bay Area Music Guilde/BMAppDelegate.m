@@ -7,8 +7,8 @@
 //
 
 #import "BMAppDelegate.h"
-
 #import "BMMainViewController.h"
+#import "RKCoreDataStore.h"
 
 @implementation BMAppDelegate
 
@@ -42,6 +42,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[[RKCoreDataStore sharedStore] managedObjectContext] save:nil];
 }
 
 
