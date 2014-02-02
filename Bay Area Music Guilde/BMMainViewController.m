@@ -11,6 +11,12 @@
 
 @implementation BMMainViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,6 +30,7 @@
 {
     if (!_datesController) {
         _datesController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMDatesViewController"];
+        _datesController.eventDelegate = self;
     }
     return _datesController;
 }
@@ -44,6 +51,15 @@
         _locationsController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMLocationsViewController"];
     }
     return _locationsController;
+}
+
+
+- (BMEventSummaryViewController *)eventSummaryController
+{
+    if (!_eventSummaryController) {
+        _eventSummaryController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMEventSummaryViewController"];
+    }
+    return _eventSummaryController;
 }
 
 
@@ -130,10 +146,8 @@
             anotherButton.selected = NO;
         }
     } completion:^(BOOL finished) {
+        [childController.view removeFromSuperview];
         [childController removeFromParentViewController];
-        if (childController == self.datesController) {
-            _datesController = nil;
-        }
     }];
 }
 
@@ -148,6 +162,50 @@
     for (UIButton *anotherButton in @[self.datesButton, self.artistsButton, self.venuesButton]) {
         anotherButton.selected = anotherButton == button;
     }
+}
+
+
+#pragma mark - BMEventHandlingDelegate
+
+- (void)viewController:(UIViewController *)controller wantsToViewEvent:(BMEvent *)event
+{
+    LNBlurView * blurView = [[LNBlurView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:blurView];
+    [blurView redraw];
+    [blurView setTag:4567];
+    blurView.alpha = 0.0f;
+    blurView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEventSummaryViewController:)];
+    [blurView addGestureRecognizer:tapRecognizer];
+    
+    self.eventSummaryController.event = event;
+    [self addChildViewController:self.eventSummaryController];
+    
+    self.eventSummaryController.view.alpha = 0.0f;
+    [self.view addSubview:self.eventSummaryController.view];
+    self.eventSummaryController.view.size = CGSizeMake(270, 328);
+    self.eventSummaryController.view.center = self.view.center;
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.eventSummaryController.view.alpha = 1.0f;
+        blurView.alpha = 1.0f;
+    } completion:nil];
+}
+
+
+- (void)hideEventSummaryViewController:(id)sender
+{
+    LNBlurView *blurView = (LNBlurView*)[self.view viewWithTag:4567];
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.eventSummaryController.view.alpha = 0.0f;
+        blurView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        [blurView removeFromSuperview];
+        [self.eventSummaryController.view removeFromSuperview];
+        [self.eventSummaryController removeFromParentViewController];
+    }];
 }
 
 @end

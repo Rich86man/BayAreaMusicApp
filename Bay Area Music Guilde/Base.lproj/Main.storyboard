@@ -166,13 +166,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" id="N6B-aa-emG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" id="N6B-aa-emG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.66996760030000002" green="0.66996760030000002" blue="0.66996760030000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.89019614458084106" green="0.89019614458084106" blue="0.88627457618713379" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BMDateTableViewCell" rowHeight="75" id="JGX-ja-ntB" customClass="BMDateTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BMDateTableViewCell" rowHeight="75" id="JGX-ja-ntB" customClass="BMDateTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JGX-ja-ntB" id="eGq-Ca-b2r">
@@ -242,6 +242,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czi-o0-imd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="335" y="182"/>
+        </scene>
+        <!--Event Summary View Controller-->
+        <scene sceneID="2E7-ej-cme">
+            <objects>
+                <viewController storyboardIdentifier="BMEventSummaryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SGA-g7-EuG" customClass="BMEventSummaryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C5j-UG-Dye">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="328"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" id="Fbd-Vl-mzK" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="328"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="fLC-mO-gSu">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </mapView>
+                                    <view contentMode="scaleToFill" id="KUl-C6-bWl" userLabel="Venue View">
+                                        <rect key="frame" x="0.0" y="150" width="270" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0lv-co-nNn">
+                                                <rect key="frame" x="10" y="5" width="250" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkk-Pi-tzu">
+                                                <rect key="frame" x="10" y="28" width="210" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rts-TT-8iK">
+                                                <rect key="frame" x="216" y="5" width="44" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="0HC-Ip-9QP" userLabel="Bands View">
+                                        <rect key="frame" x="0.0" y="211" width="270" height="117"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Os3-n9-6ZQ">
+                                                <rect key="frame" x="8" y="12" width="210" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="bandsLabel" destination="Os3-n9-6ZQ" id="COM-bG-kL3"/>
+                        <outlet property="containerView" destination="Fbd-Vl-mzK" id="Pmg-1O-nCm"/>
+                        <outlet property="dateLabel" destination="lkk-Pi-tzu" id="jjn-7v-svi"/>
+                        <outlet property="mapView" destination="fLC-mO-gSu" id="sud-9P-pck"/>
+                        <outlet property="priceLabel" destination="Rts-TT-8iK" id="99v-Ck-uaF"/>
+                        <outlet property="venueLabel" destination="0lv-co-nNn" id="GRS-hq-vQH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYR-Ch-zsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="324" y="853"/>
         </scene>
         <!--Locations View Controller-->
         <scene sceneID="DjM-oU-VCo">

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1ED40B189EB9E5005DA318 /* BMEventSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */; };
+		FA1ED40E189EBCC9005DA318 /* BMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40D189EBCC9005DA318 /* BMEvent.m */; };
+		FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1ED411189EC7F0005DA318 /* MapKit.framework */; };
+		FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED415189ED109005DA318 /* MKMapView+BM.m */; };
 		FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
 		FA89D0FA1895F022006DB239 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F91895F022006DB239 /* CoreGraphics.framework */; };
 		FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
@@ -42,7 +46,6 @@
 		FA89D1771895F1C5006DB239 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D16D1895F1C5006DB239 /* UIImageView+AFNetworking.m */; };
 		FA89D1781895F1C5006DB239 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1701895F1C5006DB239 /* UIProgressView+AFNetworking.m */; };
 		FA89D1791895F1C5006DB239 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1721895F1C5006DB239 /* UIWebView+AFNetworking.m */; };
-		FA89D1861895F688006DB239 /* BMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1851895F688006DB239 /* BMEvent.m */; };
 		FA89D1891895F688006DB239 /* BMVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1881895F688006DB239 /* BMVenue.m */; };
 		FA89D18C1895F688006DB239 /* BMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18B1895F688006DB239 /* BMArtist.m */; };
 		FA89D190189D6D89006DB239 /* BMDatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18F189D6D89006DB239 /* BMDatesViewController.m */; };
@@ -69,6 +72,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA1ED409189EB9E5005DA318 /* BMEventSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventSummaryViewController.h; sourceTree = "<group>"; };
+		FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEventSummaryViewController.m; sourceTree = "<group>"; };
+		FA1ED40C189EBCC9005DA318 /* BMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEvent.h; sourceTree = "<group>"; };
+		FA1ED40D189EBCC9005DA318 /* BMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEvent.m; sourceTree = "<group>"; };
+		FA1ED40F189EC153005DA318 /* BMEventHandlingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventHandlingDelegate.h; sourceTree = "<group>"; };
+		FA1ED411189EC7F0005DA318 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FA1ED414189ED109005DA318 /* MKMapView+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+BM.h"; sourceTree = "<group>"; };
+		FA1ED415189ED109005DA318 /* MKMapView+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+BM.m"; sourceTree = "<group>"; };
 		FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bay Area Music Guilde.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89D0F71895F022006DB239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA89D0F91895F022006DB239 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,8 +139,6 @@
 		FA89D1701895F1C5006DB239 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		FA89D1711895F1C5006DB239 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FA89D1721895F1C5006DB239 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		FA89D1841895F688006DB239 /* BMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEvent.h; sourceTree = "<group>"; };
-		FA89D1851895F688006DB239 /* BMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEvent.m; sourceTree = "<group>"; };
 		FA89D1871895F688006DB239 /* BMVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVenue.h; sourceTree = "<group>"; };
 		FA89D1881895F688006DB239 /* BMVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVenue.m; sourceTree = "<group>"; };
 		FA89D18A1895F688006DB239 /* BMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMArtist.h; sourceTree = "<group>"; };
@@ -162,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */,
 				FA89D1A2189D7F8E006DB239 /* SystemConfiguration.framework in Frameworks */,
 				FA89D1A0189D7F84006DB239 /* Security.framework in Frameworks */,
 				FA89D19E189D7F76006DB239 /* MobileCoreServices.framework in Frameworks */,
@@ -186,6 +196,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA1ED410189EC174005DA318 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FA1ED40F189EC153005DA318 /* BMEventHandlingDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		FA89D0EB1895F022006DB239 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +226,7 @@
 		FA89D0F61895F022006DB239 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA1ED411189EC7F0005DA318 /* MapKit.framework */,
 				FA89D1A1189D7F8E006DB239 /* SystemConfiguration.framework */,
 				FA89D19F189D7F84006DB239 /* Security.framework */,
 				FA89D19D189D7F76006DB239 /* MobileCoreServices.framework */,
@@ -271,13 +290,13 @@
 			isa = PBXGroup;
 			children = (
 				FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */,
+				FA1ED40C189EBCC9005DA318 /* BMEvent.h */,
+				FA1ED40D189EBCC9005DA318 /* BMEvent.m */,
 				FA89D18D189C8A6A006DB239 /* BMBaseModel.h */,
 				FA89D18A1895F688006DB239 /* BMArtist.h */,
 				FA89D18B1895F688006DB239 /* BMArtist.m */,
 				FA89D1871895F688006DB239 /* BMVenue.h */,
 				FA89D1881895F688006DB239 /* BMVenue.m */,
-				FA89D1841895F688006DB239 /* BMEvent.h */,
-				FA89D1851895F688006DB239 /* BMEvent.m */,
 				FA89D1431895F1A6006DB239 /* BMEventStore.h */,
 				FA89D1441895F1A6006DB239 /* BMEventStore.m */,
 				FA89D1401895F17E006DB239 /* RKCoreDataStore.h */,
@@ -343,6 +362,8 @@
 				FA89D1631895F1C5006DB239 /* UIKit+AFNetworking */,
 				FAB9CA73189DA2A300208220 /* NSDate+BM.h */,
 				FAB9CA74189DA2A300208220 /* NSDate+BM.m */,
+				FA1ED414189ED109005DA318 /* MKMapView+BM.h */,
+				FA1ED415189ED109005DA318 /* MKMapView+BM.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -350,6 +371,7 @@
 		FA89D197189D6DCC006DB239 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA1ED410189EC174005DA318 /* Protocols */,
 				FA89D1111895F022006DB239 /* BMMainViewController.h */,
 				FA89D1121895F022006DB239 /* BMMainViewController.m */,
 				FA89D18E189D6D89006DB239 /* BMDatesViewController.h */,
@@ -360,6 +382,8 @@
 				FA89D195189D6DA6006DB239 /* BMLocationsViewController.m */,
 				FAB9CA6A189D969300208220 /* BMFetchResultsControllerViewController.h */,
 				FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */,
+				FA1ED409189EB9E5005DA318 /* BMEventSummaryViewController.h */,
+				FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -473,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA89D196189D6DA6006DB239 /* BMLocationsViewController.m in Sources */,
+				FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */,
 				FA89D15F1895F1B9006DB239 /* AFURLConnectionOperation.m in Sources */,
 				FA89D15E1895F1B9006DB239 /* AFSecurityPolicy.m in Sources */,
 				FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */,
@@ -481,15 +506,16 @@
 				FA89D1781895F1C5006DB239 /* UIProgressView+AFNetworking.m in Sources */,
 				FA89D1751895F1C5006DB239 /* UIAlertView+AFNetworking.m in Sources */,
 				FA89D1731895F1C5006DB239 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				FA1ED40E189EBCC9005DA318 /* BMEvent.m in Sources */,
 				FA89D190189D6D89006DB239 /* BMDatesViewController.m in Sources */,
 				FA89D15B1895F1B9006DB239 /* AFHTTPRequestOperationManager.m in Sources */,
 				FA89D1791895F1C5006DB239 /* UIWebView+AFNetworking.m in Sources */,
 				FA89D1761895F1C5006DB239 /* UIButton+AFNetworking.m in Sources */,
+				FA1ED40B189EB9E5005DA318 /* BMEventSummaryViewController.m in Sources */,
 				FAB9CA6F189D9FE600208220 /* UILabel+Extras.m in Sources */,
 				FA89D1741895F1C5006DB239 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FA89D1061895F022006DB239 /* main.m in Sources */,
 				FA89D1451895F1A6006DB239 /* BMEventStore.m in Sources */,
-				FA89D1861895F688006DB239 /* BMEvent.m in Sources */,
 				FA89D1421895F17E006DB239 /* RKCoreDataStore.m in Sources */,
 				FA89D1621895F1B9006DB239 /* AFURLSessionManager.m in Sources */,
 				FA89D1611895F1B9006DB239 /* AFURLResponseSerialization.m in Sources */,

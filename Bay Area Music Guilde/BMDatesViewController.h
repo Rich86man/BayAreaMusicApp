@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BMFetchResultsControllerViewController.h"
+#import "BMEventHandlingDelegate.h"
 
 @interface BMDateTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *view;
@@ -20,9 +21,9 @@
 
 @end
 
-
 @interface BMDatesViewController : BMFetchResultsControllerViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *objectChanges;
+@property (weak, nonatomic) id <BMEventHandlingDelegate> eventDelegate;
 
 @end
+

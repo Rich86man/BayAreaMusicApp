@@ -61,8 +61,7 @@ static CGFloat baseHeight = 75;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _objectChanges = [NSMutableArray array];
-
+    
     [self.fetchController performFetch:nil];
 
     [self.tableView reloadData];
@@ -84,6 +83,16 @@ static CGFloat baseHeight = 75;
     }
     return _fetchController;
 }
+
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BMEvent *event = [self.fetchController objectAtIndexPath:indexPath];
+    [self.eventDelegate viewController:self wantsToViewEvent:event];
+}
+
 
 #pragma mark - UITableViewDatasource
 

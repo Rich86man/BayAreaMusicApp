@@ -12,12 +12,15 @@
 #import "BMLocationsViewController.h"
 #import "LNBlurView.h"
 #import <CoreData/CoreData.h>
+#import "BMEventHandlingDelegate.h"
+#import "BMEventSummaryViewController.h"
 
-@interface BMMainViewController : UIViewController
+@interface BMMainViewController : UIViewController <BMEventHandlingDelegate>
 @property (strong, nonatomic) BMEventStore *store;
 @property (strong, nonatomic) BMDatesViewController *datesController;
 @property (strong, nonatomic) BMVenuesViewController *venuesController;
 @property (strong, nonatomic) BMLocationsViewController *locationsController;
+@property (strong, nonatomic) BMEventSummaryViewController * eventSummaryController;
 @property (weak, nonatomic) IBOutlet UIButton *datesButton;
 @property (weak, nonatomic) IBOutlet UIButton *artistsButton;
 @property (weak, nonatomic) IBOutlet UIButton *venuesButton;
