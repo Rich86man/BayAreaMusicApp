@@ -52,6 +52,7 @@
 		FA89D19E189D7F76006DB239 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D19D189D7F76006DB239 /* MobileCoreServices.framework */; };
 		FA89D1A0189D7F84006DB239 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D19F189D7F84006DB239 /* Security.framework */; };
 		FA89D1A2189D7F8E006DB239 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D1A1189D7F8E006DB239 /* SystemConfiguration.framework */; };
+		FA8D7A65189DD4DB00AA738E /* LNBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8D7A64189DD4DB00AA738E /* LNBlurView.m */; };
 		FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */; };
 		FAB9CA6F189D9FE600208220 /* UILabel+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */; };
 		FAB9CA75189DA2A300208220 /* NSDate+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA74189DA2A300208220 /* NSDate+BM.m */; };
@@ -146,6 +147,8 @@
 		FA89D19D189D7F76006DB239 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		FA89D19F189D7F84006DB239 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FA89D1A1189D7F8E006DB239 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FA8D7A63189DD4DB00AA738E /* LNBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNBlurView.h; sourceTree = "<group>"; };
+		FA8D7A64189DD4DB00AA738E /* LNBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNBlurView.m; sourceTree = "<group>"; };
 		FAB9CA6A189D969300208220 /* BMFetchResultsControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMFetchResultsControllerViewController.h; sourceTree = "<group>"; };
 		FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMFetchResultsControllerViewController.m; sourceTree = "<group>"; };
 		FAB9CA6D189D9FE600208220 /* UILabel+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extras.h"; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				FA89D197189D6DCC006DB239 /* Controllers */,
 				FA89D1081895F022006DB239 /* BMAppDelegate.h */,
 				FA89D1091895F022006DB239 /* BMAppDelegate.m */,
+				FA8D7A63189DD4DB00AA738E /* LNBlurView.h */,
+				FA8D7A64189DD4DB00AA738E /* LNBlurView.m */,
 				FA89D10B1895F022006DB239 /* Main.storyboard */,
 				FA89D13F1895F148006DB239 /* Models */,
 				FA89D1001895F022006DB239 /* Supporting Files */,
@@ -491,6 +496,7 @@
 				FA89D1891895F688006DB239 /* BMVenue.m in Sources */,
 				FA89D193189D6D99006DB239 /* BMVenuesViewController.m in Sources */,
 				FA89D10A1895F022006DB239 /* BMAppDelegate.m in Sources */,
+				FA8D7A65189DD4DB00AA738E /* LNBlurView.m in Sources */,
 				FA89D1601895F1B9006DB239 /* AFURLRequestSerialization.m in Sources */,
 				FA89D19B189D7C25006DB239 /* UIView+CGRectUtils.m in Sources */,
 				FA89D1771895F1C5006DB239 /* UIImageView+AFNetworking.m in Sources */,

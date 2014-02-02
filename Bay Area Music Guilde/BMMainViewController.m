@@ -17,6 +17,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [[BMEventStore alloc] init];
     [self.store getEventsWithCompletion:nil];
+    [self addParallaxAndBlur];
 }
 
 - (BMDatesViewController *)datesController
@@ -72,6 +73,31 @@
 
 }
 
+- (void)addParallaxAndBlur
+{
+    UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
+                                                                                                        type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-10);
+    verticalMotionEffect.maximumRelativeValue = @(10);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
+                                                                                                          type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-10);
+    horizontalMotionEffect.maximumRelativeValue = @(10);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    self.blurView = [[LNBlurView alloc] initWithFrame:self.backgroundImageView.bounds];
+    [self.backgroundImageView addSubview:self.blurView];
+    self.blurView.alpha = 0.0f;
+    
+    [self.backgroundImageView addMotionEffect:group];
+}
+
 
 - (void)showChildController:(UIViewController *)childController
 {
@@ -80,6 +106,7 @@
         self.buttonsView.y = self.datesController.view.y - self.buttonsView.height;
         self.headerView.alpha = 1.0;
         self.logoImageView.alpha = 0.0f;
+        self.blurView.alpha = 1.0f;
     } completion:nil];
 }
 
@@ -95,6 +122,7 @@
         self.buttonsView.y = self.view.height - self.buttonsView.height - 20;
         self.headerView.alpha = 0.0;
         self.logoImageView.alpha = 1.0f;
+        self.blurView.alpha = 0.0f;
         for (UIButton *anotherButton in @[self.datesButton, self.artistsButton, self.venuesButton]) {
             anotherButton.selected = NO;
         }
@@ -103,9 +131,6 @@
         if (childController == self.datesController) {
             _datesController = nil;
         }
-        
-
-        
     }];
 }
 

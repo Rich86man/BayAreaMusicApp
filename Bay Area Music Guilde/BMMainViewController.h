@@ -10,7 +10,7 @@
 #import "BMDatesViewController.h"
 #import "BMVenuesViewController.h"
 #import "BMLocationsViewController.h"
-
+#import "LNBlurView.h"
 #import <CoreData/CoreData.h>
 
 @interface BMMainViewController : UIViewController
@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIView *buttonsView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) LNBlurView *blurView;
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
 - (void)hideChildController;

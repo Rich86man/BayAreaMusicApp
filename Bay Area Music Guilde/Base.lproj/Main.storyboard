@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGNOLOGO" id="Tk3-qM-nxe">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGNEW" id="Tk3-qM-nxe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -115,17 +115,17 @@
                                     <view contentMode="scaleToFill" id="HoG-nx-n8T">
                                         <rect key="frame" x="37" y="113" width="50" height="3"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.32156863808631897" green="0.26274511218070984" blue="0.30980393290519714" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" red="0.6588235294117647" green="0.39215686274509803" blue="0.66274509803921566" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="G6l-Iw-0Er">
                                         <rect key="frame" x="135" y="113" width="50" height="3"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.023529414087533951" green="0.34117648005485535" blue="0.29803922772407532" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.66274509803921566" blue="0.61568627450980395" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="yTi-Fj-xXc">
                                         <rect key="frame" x="232" y="113" width="50" height="3"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.5058823823928833" green="0.35686275362968445" blue="0.16078431904315948" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" red="0.97254901960784312" green="0.58039215686274503" blue="0.11372549019607843" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -138,6 +138,7 @@
                     </view>
                     <connections>
                         <outlet property="artistsButton" destination="G03-C9-pHe" id="F11-Vl-qtq"/>
+                        <outlet property="backgroundImageView" destination="Tk3-qM-nxe" id="yow-Cl-MeT"/>
                         <outlet property="buttonsView" destination="pT1-EQ-8zH" id="B2T-x9-UXr"/>
                         <outlet property="datesButton" destination="aqb-ik-0Q9" id="NhK-uc-fSt"/>
                         <outlet property="headerView" destination="jG4-cn-aIY" id="2af-vL-2WR"/>
@@ -269,7 +270,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BGNOLOGO" width="400" height="710"/>
+        <image name="BGNEW" width="420" height="710"/>
         <image name="Bands_Depressed" width="82" height="82"/>
         <image name="Bands_Pressed" width="82" height="82"/>
         <image name="Dates_Depressed" width="82" height="82"/>
