@@ -103,7 +103,7 @@ static CGFloat baseHeight = 75;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BMDateTableViewCell *cell = (BMDateTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"BMDateTableViewCell"];
-    BMEvent *event = self.fetchController.fetchedObjects[indexPath.row];
+    BMEvent *event = [self.fetchController objectAtIndexPath:indexPath];
     cell.venueLabel.text = event.venue.name;
     cell.artistsLabel.text = event.artistsString;
 
