@@ -2,7 +2,7 @@
 //  BMEvent.h
 //  Bay Area Music Guilde
 //
-//  Created by Captain on 1/26/14.
+//  Created by Captain on 2/2/14.
 //  Copyright (c) 2014 Exactly what it sounds like. All rights reserved.
 //
 
@@ -17,10 +17,12 @@
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * serverId;
-@property (nonatomic, retain) BMVenue *venue;
 @property (nonatomic, retain) NSSet *artists;
+@property (nonatomic, retain) BMVenue *venue;
 
 - (NSString*)artistsString;
+
+- (BOOL)isEqualToEvent:(BMEvent*)event;
 @end
 
 @interface BMEvent (CoreDataGeneratedAccessors)

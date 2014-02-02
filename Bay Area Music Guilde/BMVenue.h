@@ -9,14 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "BMBaseModel.h"
+#import <MapKit/MapKit.h>
 
 @class BMEvent;
 
-@interface BMVenue : NSManagedObject <BMBaseModel>
+@interface BMVenue : NSManagedObject <BMBaseModel, MKAnnotation>
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * serverId;
+@property (nonatomic, retain) NSNumber * latitude;
+@property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSSet *events;
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString *title;
+
+- (BOOL)isEqualToVenue:(BMVenue*)venue;
+
 @end
 
 @interface BMVenue (CoreDataGeneratedAccessors)

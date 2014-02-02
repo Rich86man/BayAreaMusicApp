@@ -23,4 +23,10 @@
     self.serverId = dict[@"id"];
 }
 
+
+- (BOOL)isEqualToArtist:(BMArtist*)artist
+{
+    return [self.serverId isEqualToNumber:artist.serverId];
+}
+
 @end

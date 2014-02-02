@@ -58,12 +58,25 @@ static NSString * localBaseUrl = @"http://localhost:4567";
             BMEvent *event = [self findOrCreateEventFromDict:eventDictionary withContext:bgContext];
 
             if (eventDictionary[@"venue"]) {
-                event.venue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
+                BMVenue *newVenue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
+                if(![event.venue isEqualToVenue:newVenue]) {
+                    event.venue = newVenue;
+                }
             }
 
             for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
                 BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
-                [event addArtistsObject:artist];
+                __block BOOL newArtistFound = NO;
+                [event.artists enumerateObjectsUsingBlock:^(BMArtist *obj, BOOL *stop) {
+                    if (![obj isEqualToArtist:artist]) {
+                        newArtistFound = YES;
+                        *stop = YES;
+                    }
+                }];
+                if (newArtistFound) {
+                    [event addArtistsObject:artist];
+                }
+                
             }
         }
         NSError *error = nil;
@@ -74,10 +87,8 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
-- (BMEvent *)findOrCreateEventFromDict:(NSDictionary*)dict withContext:(NSManagedObjectContext*)context
+- (BMEvent*)findEventWithServerId:(NSNumber*)serverId andContext:(NSManagedObjectContext*)context
 {
-    NSNumber* serverId = dict[@"id"];
-    
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
     request.fetchLimit = 1;
     request.predicate = [NSPredicate predicateWithFormat:@"serverId == %@", serverId];
@@ -88,11 +99,20 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     if (error) { NSLog(@"Error looking up Event : %@",error); }
     if (results.count >= 1) {
         id <BMBaseModel> object = results[0];
-        [object updateWithDictionary:dict];
         return object;
     }
-    
-    BMEvent *event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:context];
+    return nil;
+}
+
+
+- (BMEvent *)findOrCreateEventFromDict:(NSDictionary*)dict withContext:(NSManagedObjectContext*)context
+{
+    NSNumber* serverId = dict[@"id"];
+    BMEvent * event = [self findEventWithServerId:serverId andContext:context];
+
+    if (!event) {
+        event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:context];
+    }
     [event updateWithDictionary:dict];
     return event;
 }

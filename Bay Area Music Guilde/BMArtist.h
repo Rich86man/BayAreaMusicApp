@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * serverId;
 @property (nonatomic, retain) NSSet *events;
+
+- (BOOL)isEqualToArtist:(BMArtist*)artist;
 @end
 
 @interface BMArtist (CoreDataGeneratedAccessors)

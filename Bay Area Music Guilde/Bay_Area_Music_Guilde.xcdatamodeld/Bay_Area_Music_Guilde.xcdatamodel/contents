@@ -13,13 +13,15 @@
         <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BMVenue" inverseName="events" inverseEntity="BMVenue" syncable="YES"/>
     </entity>
     <entity name="BMVenue" representedClassName="BMVenue" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serverId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BMEvent" inverseName="venue" inverseEntity="BMEvent" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BMEvent" positionX="0" positionY="0" width="0" height="0"/>
         <element name="BMArtist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BMEvent" positionX="0" positionY="0" width="0" height="0"/>
         <element name="BMVenue" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
