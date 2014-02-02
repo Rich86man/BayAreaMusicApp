@@ -41,6 +41,7 @@ static NSDateFormatter *dateFormatter;
     for (BMArtist *artist in self.artists) {
         [string appendFormat:@"%@\n", artist.name];
     }
+    [string replaceCharactersInRange:NSMakeRange(string.length -1, 1) withString:@""];
     return string;
 }
 

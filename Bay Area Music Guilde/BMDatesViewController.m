@@ -119,7 +119,7 @@ static CGFloat baseHeight = 75;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BMEvent *event = self.fetchController.fetchedObjects[indexPath.row];
+    BMEvent *event = [self.fetchController objectAtIndexPath:indexPath];
     return [BMDateTableViewCell heightWithText:event.artistsString];
 }
 
@@ -142,7 +142,7 @@ static CGFloat baseHeight = 75;
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZ"];
     NSDate *date = [formatter dateFromString:rawDateStr];
     // Convert NSDate to format we want...
-    [formatter setDateFormat:@"d MMMM yyyy"];
+    [formatter setDateFormat:@"E MMMM d"];
     label.text = [formatter stringFromDate:date];
     
     [view addSubview:label];
