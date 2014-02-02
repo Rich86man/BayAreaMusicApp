@@ -15,4 +15,5 @@
 
 + (NSDate *)oneWeekFromToday;
 + (NSDate *)oneWeekAgoFromToday;
++ (NSDate *)twoDaysAgoFromToday;
 @end

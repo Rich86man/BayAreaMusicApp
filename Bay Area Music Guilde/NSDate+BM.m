@@ -39,4 +39,13 @@
     return [[NSDate date] oneWeekPast];
 }
 
++ (NSDate *)twoDaysAgoFromToday
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:-2];
+    return [gregorian dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
+}
+
+
 @end

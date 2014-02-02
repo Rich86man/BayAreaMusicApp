@@ -103,6 +103,7 @@
 {
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:.6 initialSpringVelocity:.6 options:0 animations:^{
         childController.view.y = 200;
+        childController.view.height = self.view.height - 200;
         self.buttonsView.y = self.datesController.view.y - self.buttonsView.height;
         self.headerView.alpha = 1.0;
         self.logoImageView.alpha = 0.0f;
