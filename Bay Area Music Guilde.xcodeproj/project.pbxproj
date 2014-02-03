@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FA1ED40B189EB9E5005DA318 /* BMEventSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */; };
-		FA1ED40E189EBCC9005DA318 /* BMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40D189EBCC9005DA318 /* BMEvent.m */; };
 		FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1ED411189EC7F0005DA318 /* MapKit.framework */; };
 		FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED415189ED109005DA318 /* MKMapView+BM.m */; };
 		FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
@@ -59,6 +58,7 @@
 		FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */; };
 		FAB9CA6F189D9FE600208220 /* UILabel+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */; };
 		FAB9CA75189DA2A300208220 /* NSDate+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9CA74189DA2A300208220 /* NSDate+BM.m */; };
+		FAC18062189F08D30082FAE5 /* BMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC18061189F08D30082FAE5 /* BMEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +74,6 @@
 /* Begin PBXFileReference section */
 		FA1ED409189EB9E5005DA318 /* BMEventSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventSummaryViewController.h; sourceTree = "<group>"; };
 		FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEventSummaryViewController.m; sourceTree = "<group>"; };
-		FA1ED40C189EBCC9005DA318 /* BMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEvent.h; sourceTree = "<group>"; };
-		FA1ED40D189EBCC9005DA318 /* BMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEvent.m; sourceTree = "<group>"; };
 		FA1ED40F189EC153005DA318 /* BMEventHandlingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventHandlingDelegate.h; sourceTree = "<group>"; };
 		FA1ED411189EC7F0005DA318 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA1ED414189ED109005DA318 /* MKMapView+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+BM.h"; sourceTree = "<group>"; };
@@ -164,6 +162,8 @@
 		FAB9CA6E189D9FE600208220 /* UILabel+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extras.m"; sourceTree = "<group>"; };
 		FAB9CA73189DA2A300208220 /* NSDate+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BM.h"; sourceTree = "<group>"; };
 		FAB9CA74189DA2A300208220 /* NSDate+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BM.m"; sourceTree = "<group>"; };
+		FAC18060189F08D30082FAE5 /* BMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEvent.h; sourceTree = "<group>"; };
+		FAC18061189F08D30082FAE5 /* BMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,8 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */,
-				FA1ED40C189EBCC9005DA318 /* BMEvent.h */,
-				FA1ED40D189EBCC9005DA318 /* BMEvent.m */,
+				FAC18060189F08D30082FAE5 /* BMEvent.h */,
+				FAC18061189F08D30082FAE5 /* BMEvent.m */,
 				FA89D18D189C8A6A006DB239 /* BMBaseModel.h */,
 				FA89D18A1895F688006DB239 /* BMArtist.h */,
 				FA89D18B1895F688006DB239 /* BMArtist.m */,
@@ -503,10 +503,10 @@
 				FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */,
 				FA89D18C1895F688006DB239 /* BMArtist.m in Sources */,
 				FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */,
+				FAC18062189F08D30082FAE5 /* BMEvent.m in Sources */,
 				FA89D1781895F1C5006DB239 /* UIProgressView+AFNetworking.m in Sources */,
 				FA89D1751895F1C5006DB239 /* UIAlertView+AFNetworking.m in Sources */,
 				FA89D1731895F1C5006DB239 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				FA1ED40E189EBCC9005DA318 /* BMEvent.m in Sources */,
 				FA89D190189D6D89006DB239 /* BMDatesViewController.m in Sources */,
 				FA89D15B1895F1B9006DB239 /* AFHTTPRequestOperationManager.m in Sources */,
 				FA89D1791895F1C5006DB239 /* UIWebView+AFNetworking.m in Sources */,

@@ -27,6 +27,16 @@
     return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
 }
 
+- (NSDate *)dateWithOutTime
+{
+    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
+    [comps setHour:00];
+    [comps setMinute:00];
+    [comps setSecond:00];
+    [comps setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
 
 + (NSDate *)oneWeekFromToday
 {

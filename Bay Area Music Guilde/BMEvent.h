@@ -15,14 +15,20 @@
 @interface BMEvent : NSManagedObject <BMBaseModel>
 
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSDate * day;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * serverId;
+@property (nonatomic, retain) NSString * hour;
+@property (nonatomic, retain) NSNumber * pitWarning;
+@property (nonatomic, retain) NSNumber * sellOutWarning;
+@property (nonatomic, retain) NSNumber * recommendation;
+@property (nonatomic, retain) NSNumber * noInOutWarning;
 @property (nonatomic, retain) NSSet *artists;
 @property (nonatomic, retain) BMVenue *venue;
 
-- (NSString*)artistsString;
+- (NSString *)artistsString;
+- (BOOL)isEqualToEvent:(BMEvent *)event;
 
-- (BOOL)isEqualToEvent:(BMEvent*)event;
 @end
 
 @interface BMEvent (CoreDataGeneratedAccessors)

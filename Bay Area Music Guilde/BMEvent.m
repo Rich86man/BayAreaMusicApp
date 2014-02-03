@@ -9,20 +9,25 @@
 #import "BMEvent.h"
 #import "BMArtist.h"
 #import "BMVenue.h"
-
+#import "NSDate+BM.h"
 
 @implementation BMEvent
 
 @dynamic date;
 @dynamic price;
 @dynamic serverId;
+@dynamic hour;
+@dynamic pitWarning;
+@dynamic sellOutWarning;
+@dynamic recommendation;
+@dynamic noInOutWarning;
 @dynamic artists;
 @dynamic venue;
-
-static NSDateFormatter *dateFormatter;
+@dynamic day;
 
 - (void)updateWithDictionary:(NSDictionary *)dict
 {
+    static NSDateFormatter *dateFormatter = nil;
     if(!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
@@ -31,12 +36,13 @@ static NSDateFormatter *dateFormatter;
     if (![self.serverId isEqualToNumber:dict[@"id"]]) {
         self.serverId = dict[@"id"];
     }
-
+    
     if (dateFormatter && dict[@"event_date"]) {
         NSDate *newDate = [dateFormatter dateFromString:dict[@"event_date"]];
         if (![self.date isEqualToDate:newDate]) {
             self.date = newDate;
         }
+        self.day = [self.date dateWithOutTime];
     }
     if ([dict[@"price"] class] != [NSNull class] && self.price != dict[@"price"]) {
         self.price = dict[@"price"];
@@ -46,6 +52,7 @@ static NSDateFormatter *dateFormatter;
 
 - (NSString *)artistsString
 {
+    if (self.artists.count < 1) { return nil; }
     NSMutableString *string = [NSMutableString string];
     for (BMArtist *artist in self.artists) {
         [string appendFormat:@"%@\n", artist.name];

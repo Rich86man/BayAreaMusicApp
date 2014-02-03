@@ -7,7 +7,13 @@
     </entity>
     <entity name="BMEvent" representedClassName="BMEvent" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="day" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noInOutWarning" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="pitWarning" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="recommendation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sellOutWarning" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="serverId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BMArtist" inverseName="events" inverseEntity="BMArtist" syncable="YES"/>
         <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BMVenue" inverseName="events" inverseEntity="BMVenue" syncable="YES"/>

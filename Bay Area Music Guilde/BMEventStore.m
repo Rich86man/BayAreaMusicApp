@@ -66,17 +66,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
             for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
                 BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
-                __block BOOL newArtistFound = NO;
-                [event.artists enumerateObjectsUsingBlock:^(BMArtist *obj, BOOL *stop) {
-                    if (![obj isEqualToArtist:artist]) {
-                        newArtistFound = YES;
-                        *stop = YES;
-                    }
-                }];
-                if (newArtistFound) {
-                    [event addArtistsObject:artist];
-                }
-                
+                [event addArtistsObject:artist];
             }
         }
         NSError *error = nil;

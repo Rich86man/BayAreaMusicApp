@@ -12,7 +12,7 @@
 
 - (NSDate *)oneWeekForward;
 - (NSDate *)oneWeekPast;
-
+- (NSDate *)dateWithOutTime;
 + (NSDate *)oneWeekFromToday;
 + (NSDate *)oneWeekAgoFromToday;
 + (NSDate *)twoDaysAgoFromToday;
