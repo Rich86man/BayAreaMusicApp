@@ -42,7 +42,6 @@
         if (![self.date isEqualToDate:newDate]) {
             self.date = newDate;
         }
-        self.day = [self.date dateWithOutTime];
     }
     if ([dict[@"price"] class] != [NSNull class] && self.price != dict[@"price"]) {
         self.price = dict[@"price"];

@@ -72,13 +72,12 @@ static CGFloat baseHeight = 75;
 {
     if (!_fetchController) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"day" ascending:YES],
-                                    [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)",[NSDate twoDaysAgoFromToday], [NSDate oneWeekFromToday]];
         request.predicate = predicate;
         _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                managedObjectContext:[[RKCoreDataStore sharedStore] managedObjectContext]
-                                                                 sectionNameKeyPath:@"day"
+                                                                 sectionNameKeyPath:@"date"
                                                                           cacheName:nil];
         _fetchController.delegate = self;
     }

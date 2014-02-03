@@ -29,13 +29,11 @@
 
 - (NSDate *)dateWithOutTime
 {
-    NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
-    [comps setHour:00];
-    [comps setMinute:00];
-    [comps setSecond:00];
-    [comps setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *components = [[NSCalendar currentCalendar]
+                                    components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                    fromDate:self];
     
-    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
 }
 
 + (NSDate *)oneWeekFromToday
