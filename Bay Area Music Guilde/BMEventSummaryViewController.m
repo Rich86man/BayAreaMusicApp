@@ -37,15 +37,11 @@
 }
 
 
-- (void)viewDidDisappear:(BOOL)animated
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
-    if (self.errorLabel) {
-        [self.errorLabel removeFromSuperview];
-        _errorLabel = nil;
-    } else {
-        [self.mapView removeAllAnnotations];
-    }
+    [super viewWillAppear:animated];
+    [self setupInitialMapStateWithVenue:self.event.venue];
 }
 
 
@@ -92,13 +88,19 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     self.dateLabel.text = [dateFormatter stringFromDate:event.date];
+    if (self.errorLabel) {
+        [self.errorLabel removeFromSuperview];
+        _errorLabel = nil;
+    }
 }
 
 
 - (void)setupInitialMapStateWithVenue:(BMVenue *)venue
 {
     self.mapView.mapType = MKMapTypeStandard;
-
+    NSMutableArray *badAnnotations = self.mapView.annotations.mutableCopy;
+    [badAnnotations removeObject:venue];
+    [self.mapView removeAnnotations:badAnnotations];
     [self.mapView addAnnotation:venue];
     [self.mapView setCenterCoordinate:venue.coordinate zoomLevel:13 animated:NO];
 }

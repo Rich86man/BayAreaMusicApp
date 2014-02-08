@@ -37,13 +37,19 @@
 }
 
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController.navigationBar removeGestureRecognizer:self.navigationBarTapGesture];
 }
 
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.mapView removeAllAnnotations];
+}
 
 - (UITapGestureRecognizer *)navigationBarTapGesture
 {
@@ -74,7 +80,7 @@
     self.mapView.mapType = MKMapTypeStandard;
     
     [self.mapView addAnnotation:venue];
-    [self.mapView setCenterCoordinate:venue.coordinate zoomLevel:20 animated:NO];
+    [self.mapView setCenterCoordinate:venue.coordinate zoomLevel:10 animated:NO];
     self.title = venue.name;
 }
 

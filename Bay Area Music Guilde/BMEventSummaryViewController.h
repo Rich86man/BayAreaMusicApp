@@ -11,7 +11,7 @@
 #import "BMEvent.h"
 #import "BMMapViewController.h"
 
-@interface BMEventSummaryViewController : UIViewController
+@interface BMEventSummaryViewController : UIViewController <MKMapViewDelegate>
 @property (strong, nonatomic) BMEvent *event;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
