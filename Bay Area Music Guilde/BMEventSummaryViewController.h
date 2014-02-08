@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "BMEvent.h"
+#import "BMMapViewController.h"
 
 @interface BMEventSummaryViewController : UIViewController
 @property (strong, nonatomic) BMEvent *event;
@@ -19,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bandsLabel;
 @property (weak, nonatomic) UILabel *errorLabel;
-
+@property (strong, nonatomic) BMMapViewController *mapController;
 
 - (instancetype)initWithEvent:(BMEvent*)event;
 - (void)setupWithEvent:(BMEvent*)event;

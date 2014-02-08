@@ -20,6 +20,19 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
 @implementation BMEventStore
 
++ (instancetype)sharedStore
+{
+    static BMEventStore *_sharedStore = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        _sharedStore = [[[self class] alloc] init];
+    });
+    
+    return _sharedStore;
+}
+
+
 - (AFHTTPRequestOperationManager *)client
 {
     if(!_client) {
@@ -132,7 +145,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
-- (BMVenue*)findOrCreateVenueFromDict:(NSDictionary*)dict withContext:(NSManagedObjectContext*)context
+- (BMVenue *)findOrCreateVenueFromDict:(NSDictionary*)dict withContext:(NSManagedObjectContext*)context
 {
     NSNumber* serverId = dict[@"id"];
     
@@ -147,7 +160,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     if (results.count >= 1) {
         id <BMBaseModel> object = results[0];
         [object updateWithDictionary:dict];
-        return object;
+        return (BMVenue *)object;
     }
     
     BMVenue *venue = [NSEntityDescription insertNewObjectForEntityForName:@"BMVenue" inManagedObjectContext:context];
@@ -157,5 +170,19 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
+- (void)updateVenue:(BMVenue*)venue
+       withLatitude:(double)lat
+          longitude:(double)lon
+            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *route = [NSString stringWithFormat:@"/venues/%i",[venue.serverId integerValue]];
+    [self.client POST:route parameters:@{@"lat" : @(lat), @"log" : @(lon)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        venue.latitude = @(lat);
+        venue.longitude = @(lon);
+        [[[RKCoreDataStore sharedStore] managedObjectContext] save:nil];
+        success(operation, responseObject);
+    } failure:failure];
+}
 
 @end

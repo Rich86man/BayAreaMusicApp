@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rQl-PL-IFJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tar-WT-SQc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="4du-z6-e7E">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="tar-WT-SQc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IXM-vV-jaC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rQl-PL-IFJ" kind="relationship" relationship="rootViewController" id="fIx-31-29g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzC-B2-N0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-524" y="182"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="rV5-Y2-ghB">
             <objects>
@@ -139,6 +154,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.081783026755852806" green="0.081783026755852806" blue="0.081783026755852806" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EGg-eQ-W9l"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="artistsButton" destination="G03-C9-pHe" id="F11-Vl-qtq"/>
                         <outlet property="backgroundImageView" destination="Tk3-qM-nxe" id="yow-Cl-MeT"/>
@@ -258,6 +275,9 @@
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="fLC-mO-gSu">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="150"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="CG3-1S-xgO" appends="YES" id="aNp-pT-4gC"/>
+                                        </connections>
                                     </mapView>
                                     <view contentMode="scaleToFill" id="KUl-C6-bWl" userLabel="Venue View">
                                         <rect key="frame" x="0.0" y="150" width="270" height="60"/>
@@ -317,8 +337,51 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYR-Ch-zsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CG3-1S-xgO">
+                    <connections>
+                        <action selector="mapViewTapped:" destination="SGA-g7-EuG" id="9rQ-DZ-06E"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="324" y="853"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="7CP-vC-g1h">
+            <objects>
+                <viewController restorationIdentifier="BMMapViewController" storyboardIdentifier="BMMapViewController" id="erg-Yi-sC5" customClass="BMMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M4C-Hi-1PG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="yJZ-i9-JOm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="erg-Yi-sC5" id="D7S-8S-joi"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" id="nEb-mQ-e9z">
+                                <rect key="frame" x="0.0" y="-44" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="erg-Yi-sC5" id="uM3-cX-qde"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="yJZ-i9-JOm" id="ObH-wB-OG6"/>
+                        <outlet property="searchBar" destination="nEb-mQ-e9z" id="J82-WB-510"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nxs-yK-1Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="840"/>
         </scene>
         <!--Locations View Controller-->
         <scene sceneID="DjM-oU-VCo">

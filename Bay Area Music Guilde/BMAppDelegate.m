@@ -9,12 +9,14 @@
 #import "BMAppDelegate.h"
 #import "BMMainViewController.h"
 #import "RKCoreDataStore.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation BMAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [GMSServices provideAPIKey:@"AIzaSyDmeRc4xWCyLfvLzdppMKTzzs5QYgEmSW0"];
     return YES;
 }
 							

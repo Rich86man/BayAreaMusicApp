@@ -21,9 +21,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.store = [[BMEventStore alloc] init];
+    self.store = [BMEventStore sharedStore];
     [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (BMDatesViewController *)datesController
@@ -181,7 +182,6 @@
     
     self.eventSummaryController.event = event;
     [self addChildViewController:self.eventSummaryController];
-    
     self.eventSummaryController.view.alpha = 0.0f;
     [self.view addSubview:self.eventSummaryController.view];
     self.eventSummaryController.view.size = CGSizeMake(270, 328);

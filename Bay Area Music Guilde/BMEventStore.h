@@ -8,11 +8,21 @@
 
 #import <Foundation/Foundation.h>
 @class AFHTTPRequestOperationManager;
+@class BMVenue;
+@class AFHTTPRequestOperation;
 
 @interface BMEventStore : NSObject
 @property (strong, nonatomic) AFHTTPRequestOperationManager* client;
 
++ (instancetype)sharedStore;
+
 - (void)getEventsWithCompletion:(void (^)(void))completion;
 
 - (void)parseJson:(id)json;
+
+- (void)updateVenue:(BMVenue*)venue
+       withLatitude:(double)lat
+          longitude:(double)lon
+            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

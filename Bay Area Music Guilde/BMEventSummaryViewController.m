@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MKMapView+BM.h"
 
+
 @implementation BMEventSummaryViewController
 
 
@@ -31,6 +32,8 @@
     self.containerView.layer.cornerRadius = 15;
     self.mapView.showsBuildings = YES;
     self.mapView.showsPointsOfInterest = YES;
+    self.mapView.zoomEnabled = NO;
+    self.mapView.scrollEnabled = NO;
 }
 
 
@@ -46,11 +49,27 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.parentViewController.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+
 - (void)setEvent:(BMEvent *)event
 {
     if (_event == event) { return; }
     _event = event;
     [self setupWithEvent:_event];
+}
+
+
+- (BMMapViewController *)mapController
+{
+    if (!_mapController) {
+        _mapController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMMapViewController"];
+    }
+    return _mapController;
 }
 
 
@@ -88,6 +107,7 @@
 - (void)setupNoMapErrorState
 {
     UILabel *label = [[UILabel alloc] initWithFrame:self.mapView.frame];
+    label.userInteractionEnabled = YES;
     label.text = @"No map data found";
     
     label.textAlignment = NSTextAlignmentCenter;
@@ -99,5 +119,10 @@
     [self.mapView setRegion:sanFranciscoRegion];
 }
 
+- (IBAction)mapViewTapped:(UITapGestureRecognizer *)sender
+{
+    self.mapController.venue = self.event.venue;
+    [self.parentViewController.navigationController pushViewController:self.mapController animated:YES];
+}
 
 @end
