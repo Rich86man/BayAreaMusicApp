@@ -196,10 +196,10 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
     view.backgroundColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 320, 22)];
     label.textAlignment = NSTextAlignmentLeft;
     label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15];
-    
+    label.textColor = [UIColor whiteColor];
     label.text = [[[self.fetchController sections] objectAtIndex:section] name];
     
     [view addSubview:label];

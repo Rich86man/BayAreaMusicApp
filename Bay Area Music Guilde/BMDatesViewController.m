@@ -137,7 +137,7 @@ static CGFloat baseHeight = 75;
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont fontWithName:@"HelveticaNeue-MediumItalic" size:12];
-    
+    label.textColor = [UIColor whiteColor];    
     NSString *rawDateStr = [[[self.fetchController sections] objectAtIndex:section] name];
     // Convert rawDateStr string to NSDate...
     static NSDateFormatter *formatter = nil;
@@ -150,7 +150,7 @@ static CGFloat baseHeight = 75;
     // Convert NSDate to format we want...
     [formatter setDateFormat:@"E MMMM d"];
     label.text = [formatter stringFromDate:date];
-    
+
     [view addSubview:label];
     return view;
 }
