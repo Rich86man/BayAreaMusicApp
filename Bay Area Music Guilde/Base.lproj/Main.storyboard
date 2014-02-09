@@ -272,6 +272,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="270" height="328"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="DTw-uu-bMQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="CG3-1S-xgO" appends="YES" id="gD0-N5-Jhp"/>
+                                        </connections>
+                                    </mapView>
                                     <view contentMode="scaleToFill" id="KUl-C6-bWl" userLabel="Venue View">
                                         <rect key="frame" x="0.0" y="150" width="270" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -304,7 +311,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Os3-n9-6ZQ">
-                                                <rect key="frame" x="8" y="12" width="210" height="21"/>
+                                                <rect key="frame" x="8" y="12" width="210" height="93"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
@@ -324,7 +331,7 @@
                         <outlet property="bandsLabel" destination="Os3-n9-6ZQ" id="COM-bG-kL3"/>
                         <outlet property="containerView" destination="Fbd-Vl-mzK" id="Pmg-1O-nCm"/>
                         <outlet property="dateLabel" destination="lkk-Pi-tzu" id="jjn-7v-svi"/>
-                        <outlet property="mapView" destination="fLC-mO-gSu" id="sud-9P-pck"/>
+                        <outlet property="mapView" destination="DTw-uu-bMQ" id="h8f-DT-mx5"/>
                         <outlet property="priceLabel" destination="Rts-TT-8iK" id="99v-Ck-uaF"/>
                         <outlet property="venueLabel" destination="0lv-co-nNn" id="GRS-hq-vQH"/>
                     </connections>
@@ -381,7 +388,7 @@
                     </connections>
                 </mapView>
             </objects>
-            <point key="canvasLocation" x="1657" y="853"/>
+            <point key="canvasLocation" x="1127" y="841"/>
         </scene>
         <!--Artists View Controller-->
         <scene sceneID="DjM-oU-VCo">

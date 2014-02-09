@@ -141,7 +141,7 @@
     
     UIViewController *childController = self.childViewControllers[0];
 
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:1 initialSpringVelocity:.4 options:0 animations:^{
+    [UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:1 initialSpringVelocity:.4 options:0 animations:^{
         childController.view.y = self.view.height;
         self.buttonsView.y = self.view.height - self.buttonsView.height - 20;
         self.headerView.alpha = 0.0;

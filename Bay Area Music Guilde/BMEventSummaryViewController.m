@@ -10,7 +10,7 @@
 #import "BMVenue.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MKMapView+BM.h"
-
+#import "UILabel+Extras.h"
 
 @implementation BMEventSummaryViewController
 
@@ -85,6 +85,8 @@
     
     self.venueLabel.text = event.venue.name;
     self.bandsLabel.text = event.artistsString;
+    [self.bandsLabel sizeToFitVertical];
+    self.bandsLabel.y = 10;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     self.dateLabel.text = [dateFormatter stringFromDate:event.date];

@@ -45,12 +45,6 @@
 }
 
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [self.mapView removeAllAnnotations];
-}
-
 - (UITapGestureRecognizer *)navigationBarTapGesture
 {
     if (!_navigationBarTapGesture) {
@@ -78,7 +72,7 @@
     currentVenueSetup = venue;
     
     self.mapView.mapType = MKMapTypeStandard;
-    
+    [self.mapView removeAllAnnotations];
     [self.mapView addAnnotation:venue];
     [self.mapView setCenterCoordinate:venue.coordinate zoomLevel:10 animated:NO];
     self.title = venue.name;
