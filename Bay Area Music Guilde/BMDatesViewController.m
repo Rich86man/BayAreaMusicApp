@@ -68,6 +68,15 @@ static CGFloat baseHeight = 75;
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    CGRect sectionRect = [self.tableView rectForSection:2];
+    sectionRect.size.height = self.tableView.frame.size.height;
+    [self.tableView scrollRectToVisible:sectionRect animated:YES];
+}
+
+
 - (NSFetchedResultsController *)fetchController
 {
     if (!_fetchController) {
@@ -122,7 +131,7 @@ static CGFloat baseHeight = 75;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
     view.backgroundColor = [UIColor colorWithRed:(183.0/255.0) green:(78.0/255.0) blue:(173.0/255.0) alpha:1];
     
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];

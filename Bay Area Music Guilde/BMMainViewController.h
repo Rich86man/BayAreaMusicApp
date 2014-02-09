@@ -33,6 +33,6 @@
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
 - (IBAction)closeButtonTapped:(UIButton *)sender;
-- (void)hideChildController;
+- (void)hideChildControllerAnotherShowing:(BOOL)showing;
 - (void)setSelectedExclusive:(UIButton*)button;
 @end

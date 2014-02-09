@@ -10,7 +10,7 @@
 #import "RKCoreDataStore.h"
 #import "NSDate+BM.h"
 #import "BMVenue.h"
-#import "BMEvent.h"
+#import "BMEvent.h"	
 
 @implementation BMArtistTableViewCell
 

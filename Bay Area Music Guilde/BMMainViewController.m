@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [BMEventStore sharedStore];
-    [self.store getEventsWithCompletion:nil];
+//    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
     
@@ -127,6 +127,7 @@
     [self addChildViewController:childController];
     [self.view addSubview:childController.view];
     childController.view.y = self.view.size.height;
+    childController.view.height = self.view.height;
 
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:.6 initialSpringVelocity:.6 options:0 animations:^{
         childController.view.y = 200;
@@ -191,6 +192,10 @@
     [blurView redraw];
     [blurView setTag:4567];
     blurView.alpha = 0.0f;
+    UIView *theDarkness = [[UIView alloc] initWithFrame:blurView.bounds];
+    theDarkness.backgroundColor = [UIColor colorWithWhite:0 alpha:.3];
+    theDarkness.userInteractionEnabled = NO;
+    [blurView addSubview:theDarkness];
     blurView.userInteractionEnabled = YES;
     
     UITapGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEventSummaryViewController:)];
