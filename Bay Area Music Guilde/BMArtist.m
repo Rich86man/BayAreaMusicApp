@@ -23,7 +23,7 @@
     self.name = dict[@"name"];
     self.serverId = dict[@"id"];
     
-    NSString *aString = [self.name lowercaseString];
+    NSString *aString = [self.name uppercaseString];
     
     NSString *stringToReturn = [aString substringToIndex:1];
     NSCharacterSet* digits = [NSCharacterSet decimalDigitCharacterSet];

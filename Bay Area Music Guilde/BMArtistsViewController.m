@@ -158,6 +158,20 @@
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
+    view.backgroundColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
+    label.textAlignment = NSTextAlignmentLeft;
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15];
+    
+    label.text = [[[self.fetchController sections] objectAtIndex:section] name];
+    
+    [view addSubview:label];
+    return view;
+}
 
 - (void)cellTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
