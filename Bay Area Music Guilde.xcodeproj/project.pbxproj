@@ -49,7 +49,7 @@
 		FA89D18C1895F688006DB239 /* BMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18B1895F688006DB239 /* BMArtist.m */; };
 		FA89D190189D6D89006DB239 /* BMDatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18F189D6D89006DB239 /* BMDatesViewController.m */; };
 		FA89D193189D6D99006DB239 /* BMVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D192189D6D99006DB239 /* BMVenuesViewController.m */; };
-		FA89D196189D6DA6006DB239 /* BMLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D195189D6DA6006DB239 /* BMLocationsViewController.m */; };
+		FA89D196189D6DA6006DB239 /* BMArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D195189D6DA6006DB239 /* BMArtistsViewController.m */; };
 		FA89D19B189D7C25006DB239 /* UIView+CGRectUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D19A189D7C25006DB239 /* UIView+CGRectUtils.m */; };
 		FA89D19E189D7F76006DB239 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D19D189D7F76006DB239 /* MobileCoreServices.framework */; };
 		FA89D1A0189D7F84006DB239 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D19F189D7F84006DB239 /* Security.framework */; };
@@ -159,8 +159,8 @@
 		FA89D18F189D6D89006DB239 /* BMDatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDatesViewController.m; sourceTree = "<group>"; };
 		FA89D191189D6D99006DB239 /* BMVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVenuesViewController.h; sourceTree = "<group>"; };
 		FA89D192189D6D99006DB239 /* BMVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVenuesViewController.m; sourceTree = "<group>"; };
-		FA89D194189D6DA6006DB239 /* BMLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMLocationsViewController.h; sourceTree = "<group>"; };
-		FA89D195189D6DA6006DB239 /* BMLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMLocationsViewController.m; sourceTree = "<group>"; };
+		FA89D194189D6DA6006DB239 /* BMArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMArtistsViewController.h; sourceTree = "<group>"; };
+		FA89D195189D6DA6006DB239 /* BMArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMArtistsViewController.m; sourceTree = "<group>"; };
 		FA89D198189D7C25006DB239 /* CGRectUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGRectUtils.h; sourceTree = "<group>"; };
 		FA89D199189D7C25006DB239 /* UIView+CGRectUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGRectUtils.h"; sourceTree = "<group>"; };
 		FA89D19A189D7C25006DB239 /* UIView+CGRectUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGRectUtils.m"; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 				FA89D18F189D6D89006DB239 /* BMDatesViewController.m */,
 				FA89D191189D6D99006DB239 /* BMVenuesViewController.h */,
 				FA89D192189D6D99006DB239 /* BMVenuesViewController.m */,
-				FA89D194189D6DA6006DB239 /* BMLocationsViewController.h */,
-				FA89D195189D6DA6006DB239 /* BMLocationsViewController.m */,
+				FA89D194189D6DA6006DB239 /* BMArtistsViewController.h */,
+				FA89D195189D6DA6006DB239 /* BMArtistsViewController.m */,
 				FAB9CA6A189D969300208220 /* BMFetchResultsControllerViewController.h */,
 				FAB9CA6B189D969300208220 /* BMFetchResultsControllerViewController.m */,
 				FA1ED409189EB9E5005DA318 /* BMEventSummaryViewController.h */,
@@ -549,7 +549,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA89D196189D6DA6006DB239 /* BMLocationsViewController.m in Sources */,
+				FA89D196189D6DA6006DB239 /* BMArtistsViewController.m in Sources */,
 				FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */,
 				FA89D15F1895F1B9006DB239 /* AFURLConnectionOperation.m in Sources */,
 				FA89D15E1895F1B9006DB239 /* AFSecurityPolicy.m in Sources */,

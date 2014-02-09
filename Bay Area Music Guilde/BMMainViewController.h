@@ -9,7 +9,7 @@
 #import "BMEventStore.h"
 #import "BMDatesViewController.h"
 #import "BMVenuesViewController.h"
-#import "BMLocationsViewController.h"
+#import "BMArtistsViewController.h"
 #import "BMBlurredView.h"
 #import <CoreData/CoreData.h>
 #import "BMEventHandlingDelegate.h"
@@ -18,8 +18,8 @@
 @interface BMMainViewController : UIViewController <BMEventHandlingDelegate>
 @property (strong, nonatomic) BMEventStore *store;
 @property (strong, nonatomic) BMDatesViewController *datesController;
+@property (strong, nonatomic) BMArtistsViewController *artistsController;
 @property (strong, nonatomic) BMVenuesViewController *venuesController;
-@property (strong, nonatomic) BMLocationsViewController *locationsController;
 @property (strong, nonatomic) BMEventSummaryViewController * eventSummaryController;
 @property (weak, nonatomic) IBOutlet UIButton *datesButton;
 @property (weak, nonatomic) IBOutlet UIButton *artistsButton;

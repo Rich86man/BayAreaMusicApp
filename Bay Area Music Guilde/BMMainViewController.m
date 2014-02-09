@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [BMEventStore sharedStore];
-    [self.store getEventsWithCompletion:nil];
+//    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
 }
@@ -37,21 +37,22 @@
 }
 
 
+- (BMArtistsViewController *)artistsController
+{
+    if (!_artistsController) {
+        _artistsController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMArtistsViewController"];
+        _artistsController.eventDelegate = self;
+    }
+    return _artistsController;
+}
+
+
 - (BMVenuesViewController *)venuesController
 {
     if(!_venuesController) {
         _venuesController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMVenuesViewController"];
     }
     return _venuesController;
-}
-
-
-- (BMLocationsViewController *)locationsController
-{
-    if (!_locationsController) {
-        _locationsController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMLocationsViewController"];
-    }
-    return _locationsController;
 }
 
 
@@ -68,18 +69,15 @@
 {
     if ([self.childViewControllers containsObject:self.datesController]) { return; }
     [self setSelectedExclusive:sender];
-    [self addChildViewController:self.datesController];
-    [self.view addSubview:self.datesController.view];
-    self.datesController.view.y = self.view.size.height;
     [self showChildController:self.datesController];
 }
 
 
 - (IBAction)venuesButtonPressed:(UIButton *)sender
 {
+    if ([self.childViewControllers containsObject:self.artistsController]) { return; }
     [self setSelectedExclusive:sender];
-    [self hideChildController];
-    
+    [self showChildController:self.artistsController];
 }
 
 
@@ -119,9 +117,15 @@
 
 - (void)showChildController:(UIViewController *)childController
 {
+    if (self.childViewControllers.count > 0) { [self hideChildController]; }
+    
+    [self addChildViewController:childController];
+    [self.view addSubview:childController.view];
+    childController.view.y = self.view.size.height;
+
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:.6 initialSpringVelocity:.6 options:0 animations:^{
         childController.view.y = 200;
-        self.buttonsView.y = self.datesController.view.y - self.buttonsView.height;
+        self.buttonsView.y = childController.view.y - self.buttonsView.height;
         self.headerView.alpha = 1.0;
         self.logoImageView.alpha = 0.0f;
         self.blurView.alpha = 1.0f;
