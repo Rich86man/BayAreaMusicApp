@@ -28,9 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) BMBlurredView *blurView;
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
+- (IBAction)closeButtonTapped:(UIButton *)sender;
 - (void)hideChildController;
 - (void)setSelectedExclusive:(UIButton*)button;
 @end

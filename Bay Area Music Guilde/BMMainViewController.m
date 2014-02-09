@@ -25,6 +25,11 @@
 //    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
+    
+    self.closeButton.layer.cornerRadius = 5.0;
+    self.closeButton.layer.borderColor = self.closeButton.titleLabel.textColor.CGColor;
+    self.closeButton.layer.borderWidth = 1.0;
+    
 }
 
 - (BMDatesViewController *)datesController
@@ -158,6 +163,11 @@
 
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender
+{
+    [self hideChildController];
+}
+
+- (IBAction)closeButtonTapped:(UIButton *)sender
 {
     [self hideChildController];
 }

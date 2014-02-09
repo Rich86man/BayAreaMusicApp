@@ -56,6 +56,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c6j-ZA-Mti">
+                                        <rect key="frame" x="243" y="5" width="57" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="KGJ-e3-CHx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -160,6 +171,7 @@
                         <outlet property="artistsButton" destination="G03-C9-pHe" id="F11-Vl-qtq"/>
                         <outlet property="backgroundImageView" destination="Tk3-qM-nxe" id="yow-Cl-MeT"/>
                         <outlet property="buttonsView" destination="pT1-EQ-8zH" id="B2T-x9-UXr"/>
+                        <outlet property="closeButton" destination="c6j-ZA-Mti" id="5xu-9C-xQj"/>
                         <outlet property="datesButton" destination="aqb-ik-0Q9" id="NhK-uc-fSt"/>
                         <outlet property="headerView" destination="jG4-cn-aIY" id="2af-vL-2WR"/>
                         <outlet property="logoImageView" destination="pRh-em-uUS" id="HUr-Dy-y6T"/>
@@ -403,12 +415,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.67450982332229614" blue="0.60784316062927246" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mdz-xx-cUG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mdz-xx-cUG">
                                 <rect key="frame" x="0.0" y="22" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.89019614459999996" green="0.89019614459999996" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BMArtistTableViewCell" rowHeight="180" id="ic8-Ji-c7E" customClass="BMArtistTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BMArtistTableViewCell" rowHeight="180" id="ic8-Ji-c7E" customClass="BMArtistTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ic8-Ji-c7E" id="l7N-69-oLk">

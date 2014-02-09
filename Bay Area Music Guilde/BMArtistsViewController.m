@@ -17,6 +17,7 @@
 - (void)awakeFromNib
 {
     self.view.layer.cornerRadius = 10.;
+    self.tableView.layer.cornerRadius = 10.;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -52,6 +53,11 @@
 
 
 @implementation BMArtistEventTableViewCell
+
+- (void)awakeFromNib
+{
+//    self.layer.cornerRadius = 10.0;
+}
 
 @end
 
