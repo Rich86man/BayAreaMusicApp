@@ -18,7 +18,19 @@
 {
     self.view.layer.cornerRadius = 10.;
     self.tableView.layer.cornerRadius = 10.;
+    self.stateImageView.tintColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
 }
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.view.height > 60) {
+        self.stateImageView.image = [[UIImage imageNamed:@"minus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else {
+        self.stateImageView.image = [[UIImage imageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -104,12 +116,14 @@
 // return list of section titles to display in section index view (e.g. "ABCD...Z#")
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
+    if (tableView != self.tableView) { return nil; }
     return @[@"#",@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
 }
 
 // tell table which section corresponds to section title/index (e.g. "B",1))
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
+    if (tableView != self.tableView) { return 0; }
     return index;
 }
 
@@ -158,8 +172,27 @@
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    if (tableView != self.tableView) {
+        return 0;
+    }
+    return 22;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView != self.tableView) {
+        return 0;
+    }
+    return 22;
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (tableView != self.tableView) { return nil; }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
     view.backgroundColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
     

@@ -17,6 +17,18 @@
 {
     self.view.layer.cornerRadius = 10.;
     self.tableView.layer.cornerRadius = 10.;
+    self.stateImageView.tintColor = [UIColor colorWithRed:(248.0/255.0) green:(140.0/255.0) blue:(29.0/255.0) alpha:1];
+    
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.view.height > 60) {
+        self.stateImageView.image = [[UIImage imageNamed:@"minus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else {
+        self.stateImageView.image = [[UIImage imageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

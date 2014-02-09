@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSArray * events;
 @property (weak, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
-@property (weak, nonatomic) IBOutlet UIButton *expandButton;
+@property (weak, nonatomic) IBOutlet UIImageView *stateImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -230,16 +230,11 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5uc-hZ-cDq">
-                                                            <rect key="frame" x="269" y="15" width="24" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="+">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="buttonPressed:" destination="JGX-ja-ntB" eventType="touchUpInside" id="0Gu-EY-ah9"/>
-                                                            </connections>
-                                                        </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="CVf-3o-UKw">
+                                                            <rect key="frame" x="269" y="20" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
@@ -248,7 +243,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artistsLabel" destination="1Yg-8R-6mB" id="UNz-7U-93g"/>
-                                            <outlet property="button" destination="5uc-hZ-cDq" id="qhy-Kb-qZw"/>
+                                            <outlet property="stateImageView" destination="CVf-3o-UKw" id="OVx-eA-SjG"/>
                                             <outlet property="venueLabel" destination="Vrw-06-avg" id="aQg-WP-5Zz"/>
                                             <outlet property="view" destination="Rfw-eA-DJy" id="QfB-2E-ZnX"/>
                                         </connections>
@@ -416,15 +411,15 @@
                                 <color key="backgroundColor" red="0.89019614459999996" green="0.89019614459999996" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BMArtistTableViewCell" rowHeight="180" id="ic8-Ji-c7E" customClass="BMArtistTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="180"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BMArtistTableViewCell" rowHeight="60" id="ic8-Ji-c7E" customClass="BMArtistTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ic8-Ji-c7E" id="l7N-69-oLk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="dcz-4u-SPC">
-                                                    <rect key="frame" x="10" y="10" width="290" height="170"/>
+                                                    <rect key="frame" x="10" y="10" width="290" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1LU-SK-tG0" userLabel="Venue Label">
@@ -434,24 +429,13 @@
                                                             <color key="textColor" red="0.0" green="0.69803923368453979" blue="0.63137257099151611" alpha="1" colorSpace="deviceRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HEZ-WE-ohi">
-                                                            <rect key="frame" x="259" y="10" width="24" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="+">
-                                                                <color key="titleColor" red="0.0" green="0.69803923368453979" blue="0.63137257099151611" alpha="1" colorSpace="deviceRGB"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="buttonPressed:" destination="JGX-ja-ntB" eventType="touchUpInside" id="5Vs-op-2Vc"/>
-                                                            </connections>
-                                                        </button>
                                                         <view contentMode="scaleToFill" id="DN6-fe-ke6">
                                                             <rect key="frame" x="250" y="15" width="1" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                             <color key="backgroundColor" red="0.66996760030000002" green="0.66996760030000002" blue="0.66996760030000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZjC-DM-EG6">
-                                                            <rect key="frame" x="20" y="50" width="270" height="120"/>
+                                                            <rect key="frame" x="20" y="50" width="270" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <prototypes>
@@ -496,6 +480,11 @@
                                                                 <outlet property="delegate" destination="gBV-zJ-PvS" id="LsX-9M-thr"/>
                                                             </connections>
                                                         </tableView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="T1F-sN-hKj">
+                                                            <rect key="frame" x="259" y="12" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
@@ -504,7 +493,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artistLabel" destination="1LU-SK-tG0" id="M8B-vs-R9G"/>
-                                            <outlet property="expandButton" destination="HEZ-WE-ohi" id="1eP-fX-ZiI"/>
+                                            <outlet property="stateImageView" destination="T1F-sN-hKj" id="nfn-VL-UZv"/>
                                             <outlet property="tableView" destination="ZjC-DM-EG6" id="EGI-Sf-bYy"/>
                                             <outlet property="view" destination="dcz-4u-SPC" id="VPT-ii-Kdc"/>
                                         </connections>
@@ -579,17 +568,6 @@
                                                             <color key="textColor" red="0.97254901959999995" green="0.58039215690000001" blue="0.1137254902" alpha="1" colorSpace="deviceRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ave-hf-jIy">
-                                                            <rect key="frame" x="259" y="10" width="24" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="+">
-                                                                <color key="titleColor" red="0.97254901959999995" green="0.58039215690000001" blue="0.1137254902" alpha="1" colorSpace="deviceRGB"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="buttonPressed:" destination="JGX-ja-ntB" eventType="touchUpInside" id="RwA-rK-s7H"/>
-                                                            </connections>
-                                                        </button>
                                                         <view contentMode="scaleToFill" id="23G-Xj-EV1">
                                                             <rect key="frame" x="250" y="15" width="1" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
@@ -641,6 +619,11 @@
                                                                 <outlet property="delegate" destination="GDm-1h-Ibd" id="aSb-VH-xOP"/>
                                                             </connections>
                                                         </tableView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="VJH-83-kJ0">
+                                                            <rect key="frame" x="259" y="12" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
@@ -648,7 +631,7 @@
                                             <color key="backgroundColor" red="0.89019614459999996" green="0.89019614459999996" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="expandButton" destination="ave-hf-jIy" id="hUQ-hJ-nVS"/>
+                                            <outlet property="stateImageView" destination="VJH-83-kJ0" id="EZa-OM-146"/>
                                             <outlet property="tableView" destination="ZAs-wV-teH" id="LZB-wT-Ser"/>
                                             <outlet property="venueLabel" destination="Y08-sC-YiP" id="LZY-gc-Io3"/>
                                             <outlet property="view" destination="3XS-qD-huP" id="sNj-pQ-51R"/>
@@ -682,6 +665,7 @@
         <image name="Dates_Depressed" width="82" height="82"/>
         <image name="Dates_Pressed" width="82" height="82"/>
         <image name="LogoBIG" width="305" height="123"/>
+        <image name="plus" width="12" height="12"/>
         <image name="venue_Depressed" width="82" height="82"/>
         <image name="venue_Pressed" width="82" height="82"/>
     </resources>

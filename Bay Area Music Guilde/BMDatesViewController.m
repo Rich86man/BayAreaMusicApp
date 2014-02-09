@@ -22,12 +22,10 @@ static CGFloat baseHeight = 75;
 - (void)awakeFromNib
 {
     self.view.layer.cornerRadius = 10.;
+    self.imageView.tintColor = [UIColor colorWithRed:(183.0/255.0) green:(78.0/255.0) blue:(173.0/255.0) alpha:1];
+    self.stateImageView.image = [[UIImage imageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
-- (IBAction)buttonPressed:(UIButton *)sender
-{
-    
-}
 
 + (CGFloat)heightWithText:(NSString*)text
 {

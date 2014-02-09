@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistsLabel;
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIImageView *stateImageView;
 
 + (CGFloat)heightWithText:(NSString*)text;
 + (CGFloat)baseHeight;
