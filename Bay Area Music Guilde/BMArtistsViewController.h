@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray * events;
 @property (weak, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
+@property (weak, nonatomic) IBOutlet UIButton *expandButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -28,7 +29,6 @@
 @interface BMArtistsViewController : BMFetchResultsControllerViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) id<BMEventHandlingDelegate> eventDelegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableDictionary *cellSizes;
 @property (strong, nonatomic) NSIndexPath *expandedIndexPath;
 - (void)cellTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath;
 @end

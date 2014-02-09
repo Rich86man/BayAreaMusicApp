@@ -56,6 +56,7 @@
 {
     if(!_venuesController) {
         _venuesController = [self.storyboard instantiateViewControllerWithIdentifier:@"BMVenuesViewController"];
+        _venuesController.eventDelegate = self;
     }
     return _venuesController;
 }
@@ -88,8 +89,9 @@
 
 - (IBAction)locationsButtonPressed:(UIButton *)sender
 {
+    if ([self.childViewControllers containsObject:self.venuesController]) { return; }
     [self setSelectedExclusive:sender];
-    [self hideChildControllerAnotherShowing:NO];
+    [self showChildController:self.venuesController];
 
 }
 
@@ -146,7 +148,7 @@
     if (self.childViewControllers.count != 1) { return; }
     
     UIViewController *childController = self.childViewControllers[0];
-
+    [childController removeFromParentViewController];
     [UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:1 initialSpringVelocity:.4 options:0 animations:^{
         childController.view.y = self.view.height;
         if (!showing) {
@@ -160,7 +162,7 @@
         }
     } completion:^(BOOL finished) {
         [childController.view removeFromSuperview];
-        [childController removeFromParentViewController];
+
     }];
 }
 

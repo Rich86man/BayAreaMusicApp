@@ -8,7 +8,32 @@
 
 #import <UIKit/UIKit.h>
 #import "BMFetchResultsControllerViewController.h"
+#import "BMVenue.h"
+#import "BMEvent.h"
+#import "BMArtist.h"
+#import "BMEventHandlingDelegate.h"
 
-@interface BMVenuesViewController : BMFetchResultsControllerViewController
+@interface BMVenueTableViewCell : UITableViewCell <UITableViewDataSource>
+@property (strong, nonatomic) NSArray *events;
+@property (weak, nonatomic) IBOutlet UIView *view;
+@property (weak, nonatomic) IBOutlet UILabel *venueLabel;
+@property (weak, nonatomic) IBOutlet UIButton *expandButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@end
 
+@interface BMVenueEventTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *artistsLabel;
+
+@end
+
+@interface BMVenuesViewController : BMFetchResultsControllerViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@property (weak, nonatomic) id<BMEventHandlingDelegate> eventDelegate;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSIndexPath *expandedIndexPath;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+- (void)cellTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath;
+- (IBAction)segmentChangedValue:(UISegmentedControl *)sender;
 @end

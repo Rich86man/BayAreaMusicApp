@@ -63,7 +63,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _cellSizes = [NSMutableDictionary dictionary];
     [self.fetchController performFetch:nil];
     self.tableView.sectionIndexColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
     self.tableView.sectionIndexBackgroundColor = self.tableView.backgroundColor;
@@ -134,7 +133,7 @@
     if ([indexPath isEqual:self.expandedIndexPath]) {
         BMArtist *artist = [self.fetchController objectAtIndexPath:indexPath];
         NSInteger numEvents = artist.events.count;
-        return 60 + (numEvents * 43);
+        return 60 + (numEvents * 44) - 1;
     }
     return 60;
 }
