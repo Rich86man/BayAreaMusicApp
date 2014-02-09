@@ -28,12 +28,14 @@
 
 @end
 
-@interface BMVenuesViewController : BMFetchResultsControllerViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface BMVenuesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) id<BMEventHandlingDelegate> eventDelegate;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *venues;
 @property (strong, nonatomic) NSIndexPath *expandedIndexPath;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (assign, nonatomic) BOOL sortedByDistance;
 - (void)cellTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath;
 - (IBAction)segmentChangedValue:(UISegmentedControl *)sender;
 @end

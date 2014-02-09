@@ -1,3 +1,4 @@
+
 //
 //  BMVenuesViewController.m
 //  Bay Area Music Guilde
@@ -40,7 +41,7 @@
     BMVenueEventTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"BMVenueEventTableViewCell"];
     BMEvent * event = self.events[indexPath.row];
     
-    cell.artistsLabel.text = [event.artistsString stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    cell.artistsLabel.text = [event.artistsString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
     cell.monthLabel.text = [monthFormatter stringFromDate:event.date];
     cell.dayLabel.text = [dayFormatter stringFromDate:event.date];
     return cell;
@@ -62,7 +63,7 @@
 {
     [super viewDidLoad];
     
-    [self.fetchController performFetch:nil];
+    [self fetchObjectsByName];
 
     [self.tableView reloadData];
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {
@@ -82,28 +83,56 @@
     return _locationManager;
 }
 
-- (NSFetchedResultsController *)fetchController
+
+- (void)fetchObjectsByName
 {
-    if (!_fetchController) {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMVenue"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-        _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                               managedObjectContext:[[RKCoreDataStore sharedStore] managedObjectContext]
-                                                                 sectionNameKeyPath:@"name"
-                                                                          cacheName:nil];
-        _fetchController.delegate = self;
-    }
-    return _fetchController;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMVenue"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    self.venues = [[[RKCoreDataStore sharedStore] managedObjectContext] executeFetchRequest:request error:nil];
+    self.sortedByDistance = NO;
 }
 
 
+- (void)fetchObjectsByDistance
+{
+    CLLocation *userLocation = self.locationManager.location;
+    if (!userLocation) {
+        [self.segmentControl setSelectedSegmentIndex:0];
+        return;
+    }
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMVenue"];
+    self.venues = [[[RKCoreDataStore sharedStore] managedObjectContext] executeFetchRequest:request error:nil];
+    self.venues = [self.venues sortedArrayUsingComparator:^(BMVenue *a,BMVenue *b) {
+        CLLocation *aloc = [[CLLocation alloc] initWithLatitude:[a.latitude doubleValue] longitude:[a.longitude doubleValue]];
+        CLLocation *bloc = [[CLLocation alloc] initWithLatitude:[b.latitude doubleValue] longitude:[b.longitude doubleValue]];
+
+        CLLocationDistance distanceA = [aloc distanceFromLocation:userLocation];
+        CLLocationDistance distanceB = [bloc distanceFromLocation:userLocation];
+        if (distanceA < distanceB) {
+            return NSOrderedAscending;
+        } else if (distanceA > distanceB) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    self.sortedByDistance = YES;
+}
+
 #pragma mark - UITableView datasource
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.venues.count;
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BMVenueTableViewCell *cell = (BMVenueTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"BMVenueTableViewCell"];
-    BMVenue *venue = [self.fetchController objectAtIndexPath:indexPath];
+    BMVenue *venue = self.venues[indexPath.row];
     cell.venueLabel.text = venue.name;
     if ([indexPath isEqual:self.expandedIndexPath]) {
         cell.events = [venue.events sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
@@ -129,8 +158,8 @@
         return 44;
     }
     if ([indexPath isEqual:self.expandedIndexPath]) {
-        BMArtist *artist = [self.fetchController objectAtIndexPath:indexPath];
-        NSInteger numEvents = artist.events.count;
+        BMVenue *venue = self.venues[indexPath.row];
+        NSInteger numEvents = venue.events.count;
         return 60 + (numEvents * 44) - 1;
     }
     return 60;
@@ -166,9 +195,16 @@
 
 - (IBAction)segmentChangedValue:(UISegmentedControl *)sender
 {
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    
-    
+    if (sender.selectedSegmentIndex == 1 && !self.sortedByDistance) {
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        [self fetchObjectsByDistance];
+        self.expandedIndexPath = nil;
+        [self.tableView reloadData];
+    } else if(sender.selectedSegmentIndex == 0 && self.sortedByDistance) {
+        [self fetchObjectsByName];
+        self.expandedIndexPath = nil;
+        [self.tableView reloadData];
+    }
 }
 
 

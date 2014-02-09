@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [BMEventStore sharedStore];
-//    [self.store getEventsWithCompletion:nil];
+    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
     
