@@ -46,7 +46,6 @@
 		FA89D1781895F1C5006DB239 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1701895F1C5006DB239 /* UIProgressView+AFNetworking.m */; };
 		FA89D1791895F1C5006DB239 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1721895F1C5006DB239 /* UIWebView+AFNetworking.m */; };
 		FA89D1891895F688006DB239 /* BMVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1881895F688006DB239 /* BMVenue.m */; };
-		FA89D18C1895F688006DB239 /* BMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18B1895F688006DB239 /* BMArtist.m */; };
 		FA89D190189D6D89006DB239 /* BMDatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D18F189D6D89006DB239 /* BMDatesViewController.m */; };
 		FA89D193189D6D99006DB239 /* BMVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D192189D6D99006DB239 /* BMVenuesViewController.m */; };
 		FA89D196189D6DA6006DB239 /* BMArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D195189D6DA6006DB239 /* BMArtistsViewController.m */; };
@@ -72,6 +71,7 @@
 		FAD7186118A6BA2B00FB9675 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD7186018A6BA2B00FB9675 /* libz.dylib */; };
 		FAD7186318A6BA3100FB9675 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD7186218A6BA3100FB9675 /* OpenGLES.framework */; };
 		FAD7186518A6BA4100FB9675 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD7186418A6BA4100FB9675 /* QuartzCore.framework */; };
+		FAE41FD318A7FF2E00BD9448 /* BMArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE41FD218A7FF2E00BD9448 /* BMArtist.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,8 +152,6 @@
 		FA89D1721895F1C5006DB239 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		FA89D1871895F688006DB239 /* BMVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVenue.h; sourceTree = "<group>"; };
 		FA89D1881895F688006DB239 /* BMVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVenue.m; sourceTree = "<group>"; };
-		FA89D18A1895F688006DB239 /* BMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMArtist.h; sourceTree = "<group>"; };
-		FA89D18B1895F688006DB239 /* BMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMArtist.m; sourceTree = "<group>"; };
 		FA89D18D189C8A6A006DB239 /* BMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMBaseModel.h; sourceTree = "<group>"; };
 		FA89D18E189D6D89006DB239 /* BMDatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMDatesViewController.h; sourceTree = "<group>"; };
 		FA89D18F189D6D89006DB239 /* BMDatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDatesViewController.m; sourceTree = "<group>"; };
@@ -191,6 +189,8 @@
 		FAD7186018A6BA2B00FB9675 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FAD7186218A6BA3100FB9675 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FAD7186418A6BA4100FB9675 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FAE41FD118A7FF2E00BD9448 /* BMArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMArtist.h; sourceTree = "<group>"; };
+		FAE41FD218A7FF2E00BD9448 /* BMArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMArtist.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,11 +340,11 @@
 			isa = PBXGroup;
 			children = (
 				FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */,
+				FAE41FD118A7FF2E00BD9448 /* BMArtist.h */,
+				FAE41FD218A7FF2E00BD9448 /* BMArtist.m */,
 				FAC18060189F08D30082FAE5 /* BMEvent.h */,
 				FAC18061189F08D30082FAE5 /* BMEvent.m */,
 				FA89D18D189C8A6A006DB239 /* BMBaseModel.h */,
-				FA89D18A1895F688006DB239 /* BMArtist.h */,
-				FA89D18B1895F688006DB239 /* BMArtist.m */,
 				FA89D1871895F688006DB239 /* BMVenue.h */,
 				FA89D1881895F688006DB239 /* BMVenue.m */,
 				FA89D1431895F1A6006DB239 /* BMEventStore.h */,
@@ -554,7 +554,6 @@
 				FA89D15F1895F1B9006DB239 /* AFURLConnectionOperation.m in Sources */,
 				FA89D15E1895F1B9006DB239 /* AFSecurityPolicy.m in Sources */,
 				FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */,
-				FA89D18C1895F688006DB239 /* BMArtist.m in Sources */,
 				FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */,
 				FAC18062189F08D30082FAE5 /* BMEvent.m in Sources */,
 				FA89D1781895F1C5006DB239 /* UIProgressView+AFNetworking.m in Sources */,
@@ -569,6 +568,7 @@
 				FA89D1741895F1C5006DB239 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FA89D1061895F022006DB239 /* main.m in Sources */,
 				FA89D1451895F1A6006DB239 /* BMEventStore.m in Sources */,
+				FAE41FD318A7FF2E00BD9448 /* BMArtist.m in Sources */,
 				FA89D1421895F17E006DB239 /* RKCoreDataStore.m in Sources */,
 				FA89D1621895F1B9006DB239 /* AFURLSessionManager.m in Sources */,
 				FA89D1611895F1B9006DB239 /* AFURLResponseSerialization.m in Sources */,

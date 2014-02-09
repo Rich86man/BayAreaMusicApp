@@ -54,11 +54,6 @@
 
 @implementation BMArtistEventTableViewCell
 
-- (void)awakeFromNib
-{
-//    self.layer.cornerRadius = 10.0;
-}
-
 @end
 
 
@@ -70,7 +65,8 @@
     [super viewDidLoad];
     _cellSizes = [NSMutableDictionary dictionary];
     [self.fetchController performFetch:nil];
-    
+    self.tableView.sectionIndexColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
+    self.tableView.sectionIndexBackgroundColor = self.tableView.backgroundColor;
     [self.tableView reloadData];
 }
 
@@ -79,10 +75,10 @@
 {
     if (!_fetchController) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMArtist"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstLetterOfName" ascending:YES]];
         _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                managedObjectContext:[[RKCoreDataStore sharedStore] managedObjectContext]
-                                                                 sectionNameKeyPath:nil
+                                                                 sectionNameKeyPath:@"firstLetterOfName"
                                                                           cacheName:nil];
         _fetchController.delegate = self;
     }
@@ -91,12 +87,6 @@
 
 
 #pragma mark - UITableView datasource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,6 +99,19 @@
         [cell.tableView reloadData];
     }
     return cell;
+}
+
+
+// return list of section titles to display in section index view (e.g. "ABCD...Z#")
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return @[@"#",@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
+}
+
+// tell table which section corresponds to section title/index (e.g. "B",1))
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return index;
 }
 
 
@@ -142,7 +145,7 @@
         [self cellTableView:tableView didSelectRowAtIndexPath:indexPath];
         return;
     }
-    
+
     if (self.expandedIndexPath) {
         NSIndexPath *oldExpandedIndexPath = self.expandedIndexPath;
         BMArtistTableViewCell *cell = (BMArtistTableViewCell*)[tableView cellForRowAtIndexPath:oldExpandedIndexPath];

@@ -10,6 +10,22 @@
 
 @implementation BMFetchResultsControllerViewController
 
+
+#pragma UITableViewDatasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.fetchController.sections.count;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+
 #pragma mark - Overridden getters
 
 /**

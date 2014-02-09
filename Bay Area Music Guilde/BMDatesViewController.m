@@ -96,18 +96,6 @@ static CGFloat baseHeight = 75;
 
 #pragma mark - UITableViewDatasource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.fetchController.sections.count;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [BMEventStore sharedStore];
-//    [self.store getEventsWithCompletion:nil];
+    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
     
@@ -89,7 +89,7 @@
 - (IBAction)locationsButtonPressed:(UIButton *)sender
 {
     [self setSelectedExclusive:sender];
-    [self hideChildController];
+    [self hideChildControllerAnotherShowing:NO];
 
 }
 
@@ -122,7 +122,7 @@
 
 - (void)showChildController:(UIViewController *)childController
 {
-    if (self.childViewControllers.count > 0) { [self hideChildController]; }
+    if (self.childViewControllers.count > 0) { [self hideChildControllerAnotherShowing:YES]; }
     
     [self addChildViewController:childController];
     [self.view addSubview:childController.view];
@@ -140,7 +140,7 @@
 }
 
 
-- (void)hideChildController
+- (void)hideChildControllerAnotherShowing:(BOOL)showing
 {
     if (self.childViewControllers.count != 1) { return; }
     
@@ -148,12 +148,14 @@
 
     [UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:1 initialSpringVelocity:.4 options:0 animations:^{
         childController.view.y = self.view.height;
-        self.buttonsView.y = self.view.height - self.buttonsView.height - 20;
-        self.headerView.alpha = 0.0;
-        self.logoImageView.alpha = 1.0f;
-        self.blurView.alpha = 0.0f;
-        for (UIButton *anotherButton in @[self.datesButton, self.artistsButton, self.venuesButton]) {
-            anotherButton.selected = NO;
+        if (!showing) {
+            self.buttonsView.y = self.view.height - self.buttonsView.height - 20;
+            self.headerView.alpha = 0.0;
+            self.logoImageView.alpha = 1.0f;
+            self.blurView.alpha = 0.0f;
+            for (UIButton *anotherButton in @[self.datesButton, self.artistsButton, self.venuesButton]) {
+                anotherButton.selected = NO;
+            }
         }
     } completion:^(BOOL finished) {
         [childController.view removeFromSuperview];
@@ -164,12 +166,12 @@
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender
 {
-    [self hideChildController];
+    [self hideChildControllerAnotherShowing:NO];
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender
 {
-    [self hideChildController];
+    [self hideChildControllerAnotherShowing:NO];
 }
 
 - (void)setSelectedExclusive:(UIButton *)button
