@@ -34,9 +34,12 @@
                                     <outletCollection property="gestureRecognizers" destination="p06-CX-c2t" appends="YES" id="rco-QL-V5l"/>
                                 </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoBIG" id="pRh-em-uUS">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoBIG" id="pRh-em-uUS">
                                 <rect key="frame" x="8" y="20" width="305" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="5r9-4a-eVA" appends="YES" id="qx7-nT-Ozi"/>
+                                </connections>
                             </imageView>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" id="jG4-cn-aIY" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="20" width="320" height="40"/>
@@ -179,6 +182,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4L-l5-tyG" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="5r9-4a-eVA">
+                    <connections>
+                        <action selector="logoTapped:" destination="rQl-PL-IFJ" id="RCq-7c-glQ"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="p06-CX-c2t">
                     <connections>
                         <action selector="viewTapped:" destination="rQl-PL-IFJ" id="xru-4G-uAc"/>
@@ -232,7 +240,7 @@
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="CVf-3o-UKw">
                                                             <rect key="frame" x="269" y="20" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                                         </imageView>
                                                     </subviews>
@@ -482,7 +490,7 @@
                                                         </tableView>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="T1F-sN-hKj">
                                                             <rect key="frame" x="259" y="12" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                                         </imageView>
                                                     </subviews>
@@ -621,7 +629,7 @@
                                                         </tableView>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="VJH-83-kJ0">
                                                             <rect key="frame" x="259" y="12" width="25" height="25"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                                         </imageView>
                                                     </subviews>

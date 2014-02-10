@@ -22,7 +22,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.store = [BMEventStore sharedStore];
-//    [self.store getEventsWithCompletion:nil];
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
     
@@ -170,6 +169,26 @@
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender
 {
     [self hideChildControllerAnotherShowing:NO];
+}
+
+
+- (IBAction)logoTapped:(UITapGestureRecognizer *)sender
+{
+    CGRect original = self.logoImageView.frame;
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
+        self.logoImageView.frame = CGRectInset(self.logoImageView.frame, 50, 15);
+    } completion:nil];
+    
+    
+    [self.store getEventsWithCompletion:^{
+        [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
+            self.logoImageView.frame = CGRectInset(self.logoImageView.frame, -50, -15);
+        } completion:nil];
+        
+    }];
+    
+    
+    
 }
 
 - (IBAction)closeButtonTapped:(UIButton *)sender

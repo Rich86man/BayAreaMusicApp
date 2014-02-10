@@ -18,7 +18,7 @@
 
 - (void)getEventsWithCompletion:(void (^)(void))completion;
 
-- (void)parseJson:(id)json;
+- (void)parseJson:(id)json withCompletion:(void (^)(void))completion;
 
 - (void)updateVenue:(BMVenue*)venue
        withLatitude:(double)lat

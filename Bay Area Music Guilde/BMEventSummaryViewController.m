@@ -83,7 +83,7 @@
         [self setupNoMapErrorState];
     }
     
-    self.venueLabel.text = event.venue.name;
+    self.venueLabel.text = [event.serverId stringValue];
     self.bandsLabel.text = event.artistsString;
     [self.bandsLabel sizeToFitVertical];
     self.bandsLabel.y = 10;

@@ -30,15 +30,16 @@
     static NSDateFormatter *dateFormatter = nil;
     if(!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+//        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     }
-    
+
     if (![self.serverId isEqualToNumber:dict[@"id"]]) {
         self.serverId = dict[@"id"];
     }
     
     if (dateFormatter && dict[@"event_date"]) {
-        NSDate *newDate = [dateFormatter dateFromString:dict[@"event_date"]];
+        NSDate *newDate = [[dateFormatter dateFromString:dict[@"event_date"]] dateByAddingTimeInterval:60 * 60 * 8];
         if (![self.date isEqualToDate:newDate]) {
             self.date = newDate;
         }

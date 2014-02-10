@@ -49,7 +49,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     }
     
     [self.client GET:@"events" parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self parseJson:responseObject];
+        [self parseJson:responseObject withCompletion:completion];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -58,7 +58,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
 
 // TODO : Do this on a bg queue
-- (void)parseJson:(id)json
+- (void)parseJson:(id)json withCompletion:(void (^)(void))completion
 {
     [[RKCoreDataStore sharedStore] managedObjectContext];
 
@@ -86,6 +86,11 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         [bgContext save:&error];
         if (error) { NSLog(@"Error saving db after parsing : %@", error); }
         else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(),^{
+                completion();
+            });
+        }
     });
 }
 
