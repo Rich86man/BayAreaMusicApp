@@ -86,7 +86,8 @@
 {
     if (!_fetchController) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMArtist"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstLetterOfName" ascending:YES]];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstLetterOfName" ascending:YES],
+                                    [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
         _fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                managedObjectContext:[[RKCoreDataStore sharedStore] managedObjectContext]
                                                                  sectionNameKeyPath:@"firstLetterOfName"
