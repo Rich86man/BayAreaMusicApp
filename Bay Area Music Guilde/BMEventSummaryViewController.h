@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bandsLabel;
 @property (weak, nonatomic) UILabel *errorLabel;
 @property (strong, nonatomic) BMMapViewController *mapController;
+@property (weak, nonatomic) IBOutlet UIView *bandsView;
 
 - (instancetype)initWithEvent:(BMEvent*)event;
 - (void)setupWithEvent:(BMEvent*)event;

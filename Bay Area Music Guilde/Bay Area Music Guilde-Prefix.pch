@@ -16,3 +16,9 @@
     #import <CoreData/CoreData.h>
     #import "UIView+CGRectUtils.h"
 #endif
+
+#if DEBUG
+#define NSLog(format, ...) NSLog(format, ##__VA_ARGS__);
+#else
+#define NSLog(...)
+#endif

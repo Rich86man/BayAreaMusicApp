@@ -91,6 +91,7 @@
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
         _locationManager.activityType = CLActivityTypeOtherNavigation;
+        _locationManager.distanceFilter = 1600;
     }
     return _locationManager;
 }
@@ -109,6 +110,13 @@
 {
     CLLocation *userLocation = self.locationManager.location;
     if (!userLocation) {
+        if ([CLLocationManager authorizationStatus] < kCLAuthorizationStatusAuthorized) {
+            [[[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
+                                        message:@"Please allow this app to use location services to enable this feature"
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+        }
         [self.segmentControl setSelectedSegmentIndex:0];
         return;
     }
@@ -224,7 +232,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    
+    [self fetchObjectsByDistance];
+    [self.tableView reloadData];
 }
 
 @end

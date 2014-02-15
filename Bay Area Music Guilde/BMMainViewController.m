@@ -174,11 +174,9 @@
 
 - (IBAction)logoTapped:(UITapGestureRecognizer *)sender
 {
-    CGRect original = self.logoImageView.frame;
     [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
         self.logoImageView.frame = CGRectInset(self.logoImageView.frame, 50, 15);
     } completion:nil];
-    
     
     [self.store getEventsWithCompletion:^{
         [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
@@ -186,8 +184,6 @@
         } completion:nil];
         
     }];
-    
-    
     
 }
 
@@ -226,7 +222,6 @@
     [self addChildViewController:self.eventSummaryController];
     self.eventSummaryController.view.alpha = 0.0f;
     [self.view addSubview:self.eventSummaryController.view];
-    self.eventSummaryController.view.size = CGSizeMake(270, 328);
     self.eventSummaryController.view.center = self.view.center;
     
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{

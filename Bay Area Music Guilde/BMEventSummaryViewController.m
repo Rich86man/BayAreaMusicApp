@@ -41,7 +41,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setupInitialMapStateWithVenue:self.event.venue];
+    if (CLLocationCoordinate2DIsValid(self.event.venue.coordinate)) {
+        [self setupInitialMapStateWithVenue:self.event.venue];
+    } else {
+        [self setupNoMapErrorState];
+    }
 }
 
 
@@ -83,10 +87,14 @@
         [self setupNoMapErrorState];
     }
     
-    self.venueLabel.text = [event.serverId stringValue];
+    self.venueLabel.text = event.venue.name;
     self.bandsLabel.text = event.artistsString;
     [self.bandsLabel sizeToFitVertical];
-    self.bandsLabel.y = 10;
+    self.bandsLabel.y = 5;
+    self.bandsView.height = self.bandsLabel.height + 10;
+    self.containerView.height = self.bandsView.y + self.bandsView.height;
+    self.view.size = self.containerView.size;
+    self.containerView.y = (self.view.height / 2) - (self.containerView.height / 2);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     self.dateLabel.text = [dateFormatter stringFromDate:event.date];

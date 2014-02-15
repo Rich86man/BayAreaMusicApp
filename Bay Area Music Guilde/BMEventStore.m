@@ -73,13 +73,18 @@ static NSString * localBaseUrl = @"http://localhost:4567";
             if (eventDictionary[@"venue"]) {
                 BMVenue *newVenue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
                 if(![event.venue isEqualToVenue:newVenue]) {
+                    NSLog(@"event : %@ got a new Venue : %@",event, newVenue);
                     event.venue = newVenue;
                 }
             }
 
             for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
                 BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
-                [event addArtistsObject:artist];
+                if (![event.artists containsObject:artist]) {
+                    NSLog(@"event : %@ got a new Artist : %@",event, artist);
+                    [event addArtistsObject:artist];
+                }
+
             }
         }
         NSError *error = nil;
