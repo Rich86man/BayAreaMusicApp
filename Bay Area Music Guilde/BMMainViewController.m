@@ -28,8 +28,8 @@
     self.closeButton.layer.cornerRadius = 5.0;
     self.closeButton.layer.borderColor = self.closeButton.titleLabel.textColor.CGColor;
     self.closeButton.layer.borderWidth = 1.0;
-    
 }
+
 
 - (BMDatesViewController *)datesController
 {
@@ -69,6 +69,15 @@
     return _eventSummaryController;
 }
 
+
+- (UIPanGestureRecognizer *)panGesture
+{
+    if (!_panGesture) {
+        _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+        _panGesture.delegate = self;
+    }
+    return _panGesture;
+}
 
 - (IBAction)datesButtonPressed:(UIButton *)sender
 {
@@ -138,6 +147,7 @@
         self.blurView.alpha = 1.0f;
     } completion:^(BOOL finished) {
         childController.view.height = self.view.height - 200;
+        [childController.view addGestureRecognizer:self.panGesture];
     }];
 }
 
@@ -161,7 +171,6 @@
         }
     } completion:^(BOOL finished) {
         [childController.view removeFromSuperview];
-
     }];
 }
 
@@ -243,6 +252,52 @@
         [self.eventSummaryController.view removeFromSuperview];
         [self.eventSummaryController removeFromParentViewController];
     }];
+}
+
+
+
+#pragma mark - PanGesture
+
+- (void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer
+{
+    UIView *controllerView = gestureRecognizer.view;
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.view];
+
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        controllerView.y = MAX(MIN(touchPoint.y, 200), 60);
+        controllerView.height = MAX(self.view.height - touchPoint.y, self.view.height - 200);
+        self.buttonsView.y = controllerView.y - self.buttonsView.height;
+    } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        CGFloat velocity = abs([gestureRecognizer velocityInView:self.view].y) / 10000;
+        controllerView.height = touchPoint.y < 130 ? 518 : 568;
+
+        [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:.7 initialSpringVelocity:velocity options:0 animations:^{
+            controllerView.y = touchPoint.y < 130 ? 60 : 200;
+            
+            self.buttonsView.y = controllerView.y - self.buttonsView.height;
+        } completion:^(BOOL finished) {
+            controllerView.height = touchPoint.y < 130 ? 518 : 368;
+        }];
+    
+    }
+}
+
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint touchPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
+    return touchPoint.y < 30;
+}
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return NO;
 }
 
 @end

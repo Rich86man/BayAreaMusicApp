@@ -15,7 +15,7 @@
 #import "BMEventHandlingDelegate.h"
 #import "BMEventSummaryViewController.h"
 
-@interface BMMainViewController : UIViewController <BMEventHandlingDelegate>
+@interface BMMainViewController : UIViewController <BMEventHandlingDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) BMEventStore *store;
 @property (strong, nonatomic) BMDatesViewController *datesController;
 @property (strong, nonatomic) BMArtistsViewController *artistsController;
@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) BMBlurredView *blurView;
+@property (strong, nonatomic) UIPanGestureRecognizer *panGesture;
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender;
 - (IBAction)closeButtonTapped:(UIButton *)sender;
