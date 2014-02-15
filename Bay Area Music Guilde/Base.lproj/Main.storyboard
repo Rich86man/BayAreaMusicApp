@@ -373,12 +373,18 @@
                                     <outlet property="delegate" destination="erg-Yi-sC5" id="uM3-cX-qde"/>
                                 </connections>
                             </searchBar>
+                            <tabBar contentMode="scaleToFill" id="7Zn-pt-yuy">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items/>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="yJZ-i9-JOm" id="ObH-wB-OG6"/>
                         <outlet property="searchBar" destination="nEb-mQ-e9z" id="J82-WB-510"/>

@@ -33,7 +33,9 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+#ifndef RELEASE
     [self.navigationController.navigationBar addGestureRecognizer:self.navigationBarTapGesture];
+#endif
 }
 
 
@@ -41,7 +43,9 @@
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+#ifndef RELEASE
     [self.navigationController.navigationBar removeGestureRecognizer:self.navigationBarTapGesture];
+#endif
 }
 
 
