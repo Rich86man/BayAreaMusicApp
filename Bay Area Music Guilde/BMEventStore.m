@@ -14,6 +14,7 @@
 #import "BMVenue.h"
 #import "RKCoreDataStore.h"
 #import "BMBaseModel.h"
+#import "NSDate+BM.h"
 
 static NSString * baseUrl = @"http://nameless-mountain-3360.herokuapp.com";
 static NSString * localBaseUrl = @"http://localhost:4567";
@@ -44,16 +45,46 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
 - (void)getEventsWithCompletion:(void (^)(void))completion
 {
-    if (self.client.operationQueue.operationCount > 0 ) {
-        return;
+    static NSDateFormatter *eventFetchingDateFormatter = nil;
+    if (!eventFetchingDateFormatter) {
+        eventFetchingDateFormatter = [[NSDateFormatter alloc] init];
+        [eventFetchingDateFormatter setDateFormat:@"MMM-dd"];
     }
     
-    [self.client GET:@"events" parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self parseJson:responseObject withCompletion:completion];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    NSMutableArray *daysToFetch = [NSMutableArray arrayWithCapacity:10];
+    NSDate *today = [NSDate date];
+    
+    for (int i = 0; i < 20; i++) {
+        [daysToFetch addObject:today];
+        today = [today oneDayForward];
+    }
+    dispatch_queue_t serialQueue = dispatch_queue_create("com.unique.name.queue", DISPATCH_QUEUE_SERIAL);
+    
 
+    for (NSDate *date in daysToFetch) {
+        
+        dispatch_sync(serialQueue, ^{
+            NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
+            [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                [self parseJson:responseObject withCompletion:completion];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+        });
+    }
+}
+
+
+- (void)getEventsWithDay:(NSDate *)date
+{
+
+    
+}
+
+
+- (void)getDeletions
+{
+    
 }
 
 
@@ -62,41 +93,39 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 {
     [[RKCoreDataStore sharedStore] managedObjectContext];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    
+    NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
+    
+    for (NSDictionary *eventDictionary in json) {
         
-        NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
+        BMEvent *event = [self findOrCreateEventFromDict:eventDictionary withContext:bgContext];
         
-        for (NSDictionary *eventDictionary in json) {
-
-            BMEvent *event = [self findOrCreateEventFromDict:eventDictionary withContext:bgContext];
-
-            if (eventDictionary[@"venue"]) {
-                BMVenue *newVenue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
-                if(![event.venue isEqualToVenue:newVenue]) {
-                    NSLog(@"event : %@ got a new Venue : %@",event, newVenue);
-                    event.venue = newVenue;
-                }
-            }
-
-            for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
-                BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
-                if (![event.artists containsObject:artist]) {
-                    NSLog(@"event : %@ got a new Artist : %@",event, artist);
-                    [event addArtistsObject:artist];
-                }
-
+        if (eventDictionary[@"venue"]) {
+            BMVenue *newVenue = [self findOrCreateVenueFromDict:eventDictionary[@"venue"] withContext:bgContext];
+            if(![event.venue isEqualToVenue:newVenue]) {
+                NSLog(@"event : %@ got a new Venue : %@",event, newVenue);
+                event.venue = newVenue;
             }
         }
-        NSError *error = nil;
-        [bgContext save:&error];
-        if (error) { NSLog(@"Error saving db after parsing : %@", error); }
-        else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
-        if (completion) {
-            dispatch_async(dispatch_get_main_queue(),^{
-                completion();
-            });
+        
+        for (NSDictionary *artistDict in eventDictionary[@"artists"]) {
+            BMArtist *artist = [self findOrCreateArtistFromDict:artistDict withContext:bgContext];
+            if (![event.artists containsObject:artist]) {
+                NSLog(@"event : %@ got a new Artist : %@",event, artist);
+                [event addArtistsObject:artist];
+            }
+            
         }
-    });
+    }
+    NSError *error = nil;
+    [bgContext save:&error];
+    if (error) { NSLog(@"Error saving db after parsing : %@", error); }
+    else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
+    if (completion) {
+        dispatch_async(dispatch_get_main_queue(),^{
+            completion();
+        });
+    }
 }
 
 

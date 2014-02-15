@@ -25,4 +25,7 @@
           longitude:(double)lon
             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)getEventsWithDay:(NSDate *)date;
+- (void)getDeletions;
 @end

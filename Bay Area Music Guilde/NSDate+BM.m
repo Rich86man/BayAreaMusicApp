@@ -10,6 +10,14 @@
 
 @implementation NSDate (BM)
 
+- (NSDate *)oneDayForward
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:1];
+    return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
+}
+
 - (NSDate *)oneWeekForward
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];

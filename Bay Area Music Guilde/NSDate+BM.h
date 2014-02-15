@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (BM)
-
+- (NSDate *)oneDayForward;
 - (NSDate *)oneWeekForward;
 - (NSDate *)oneWeekPast;
 - (NSDate *)dateWithOutTime;
