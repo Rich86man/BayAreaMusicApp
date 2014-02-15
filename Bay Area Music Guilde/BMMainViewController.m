@@ -28,6 +28,7 @@
     self.closeButton.layer.cornerRadius = 5.0;
     self.closeButton.layer.borderColor = self.closeButton.titleLabel.textColor.CGColor;
     self.closeButton.layer.borderWidth = 1.0;
+    [self.store getEventsWithCompletion:nil];
 }
 
 
