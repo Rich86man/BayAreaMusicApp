@@ -23,8 +23,6 @@ static CGFloat baseHeight = 75;
 - (void)awakeFromNib
 {
     self.view.layer.cornerRadius = 10.;
-    self.imageView.tintColor = [UIColor iconPurple];
-    self.stateImageView.image = [[UIImage imageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 
