@@ -85,6 +85,22 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+
 - (CLLocationManager *)locationManager
 {
     if(!_locationManager) {
