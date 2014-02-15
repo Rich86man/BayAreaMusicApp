@@ -11,6 +11,7 @@
 #import "NSDate+BM.h"
 #import "BMVenue.h"
 #import "BMEvent.h"	
+#import "UIColor+BMColors.h"
 
 @implementation BMArtistTableViewCell
 
@@ -18,7 +19,7 @@
 {
     self.view.layer.cornerRadius = 10.;
     self.tableView.layer.cornerRadius = 10.;
-    self.stateImageView.tintColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
+    self.stateImageView.tintColor = [UIColor iconGreen];
 }
 
 - (void)layoutSubviews
@@ -76,7 +77,7 @@
 {
     [super viewDidLoad];
     [self.fetchController performFetch:nil];
-    self.tableView.sectionIndexColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
+    self.tableView.sectionIndexColor = [UIColor iconGreen];
     self.tableView.sectionIndexBackgroundColor = self.tableView.backgroundColor;
     [self.tableView reloadData];
 }
@@ -191,11 +192,26 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor tableViewBGColor];
+    
+    return view;
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (tableView != self.tableView) { return nil; }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
-    view.backgroundColor = [UIColor colorWithRed:0 green:(169.0/255.0) blue:(157.0/255.0) alpha:1];
+    view.backgroundColor = [UIColor iconGreen];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 320, 22)];
     label.textAlignment = NSTextAlignmentLeft;

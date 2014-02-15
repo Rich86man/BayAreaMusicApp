@@ -14,6 +14,7 @@
 #import "BMArtist.h"
 #import "UILabel+Extras.h"
 #import "NSDate+BM.h"
+#import "UIColor+BMColors.h"
 
 static CGFloat baseHeight = 75;
 
@@ -22,7 +23,7 @@ static CGFloat baseHeight = 75;
 - (void)awakeFromNib
 {
     self.view.layer.cornerRadius = 10.;
-    self.imageView.tintColor = [UIColor colorWithRed:(183.0/255.0) green:(78.0/255.0) blue:(173.0/255.0) alpha:1];
+    self.imageView.tintColor = [UIColor iconPurple];
     self.stateImageView.image = [[UIImage imageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
@@ -129,10 +130,26 @@ static CGFloat baseHeight = 75;
     return [BMDateTableViewCell heightWithText:event.artistsString];
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor tableViewBGColor];
+
+    return view;
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
-    view.backgroundColor = [UIColor colorWithRed:(183.0/255.0) green:(78.0/255.0) blue:(173.0/255.0) alpha:1];
+    view.backgroundColor = [UIColor iconPurple];
     
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
     label.textAlignment = NSTextAlignmentCenter;

@@ -10,6 +10,7 @@
 #import "BMVenuesViewController.h"
 #import "RKCoreDataStore.h"
 #import "NSDate+BM.h"
+#import "UIColor+BMColors.h"
 
 @implementation BMVenueTableViewCell
 
@@ -17,7 +18,7 @@
 {
     self.view.layer.cornerRadius = 10.;
     self.tableView.layer.cornerRadius = 10.;
-    self.stateImageView.tintColor = [UIColor colorWithRed:(248.0/255.0) green:(140.0/255.0) blue:(29.0/255.0) alpha:1];
+    self.stateImageView.tintColor = [UIColor iconYellow];
     
 }
 
@@ -184,6 +185,22 @@
     }
     return 60;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor tableViewBGColor];
+    
+    return view;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

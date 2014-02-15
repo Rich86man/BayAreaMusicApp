@@ -10,6 +10,7 @@
 		FA1ED40B189EB9E5005DA318 /* BMEventSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */; };
 		FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1ED411189EC7F0005DA318 /* MapKit.framework */; };
 		FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED415189ED109005DA318 /* MKMapView+BM.m */; };
+		FA2EB26818AFFE6E00AC237B /* UIColor+BMColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */; };
 		FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
 		FA89D0FA1895F022006DB239 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F91895F022006DB239 /* CoreGraphics.framework */; };
 		FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
@@ -91,6 +92,8 @@
 		FA1ED411189EC7F0005DA318 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA1ED414189ED109005DA318 /* MKMapView+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+BM.h"; sourceTree = "<group>"; };
 		FA1ED415189ED109005DA318 /* MKMapView+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+BM.m"; sourceTree = "<group>"; };
+		FA2EB26618AFFE6E00AC237B /* UIColor+BMColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BMColors.h"; sourceTree = "<group>"; };
+		FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BMColors.m"; sourceTree = "<group>"; };
 		FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bay Area Music Guilde.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89D0F71895F022006DB239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA89D0F91895F022006DB239 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -414,6 +417,8 @@
 				FAB9CA74189DA2A300208220 /* NSDate+BM.m */,
 				FA1ED414189ED109005DA318 /* MKMapView+BM.h */,
 				FA1ED415189ED109005DA318 /* MKMapView+BM.m */,
+				FA2EB26618AFFE6E00AC237B /* UIColor+BMColors.h */,
+				FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 				FA89D196189D6DA6006DB239 /* BMArtistsViewController.m in Sources */,
 				FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */,
 				FA89D15F1895F1B9006DB239 /* AFURLConnectionOperation.m in Sources */,
+				FA2EB26818AFFE6E00AC237B /* UIColor+BMColors.m in Sources */,
 				FA89D15E1895F1B9006DB239 /* AFSecurityPolicy.m in Sources */,
 				FA89D1131895F022006DB239 /* BMMainViewController.m in Sources */,
 				FAB9CA6C189D969300208220 /* BMFetchResultsControllerViewController.m in Sources */,
