@@ -10,9 +10,11 @@
 #import <MapKit/MapKit.h>
 #import "BMVenue.h"
 
-@interface BMMapViewController : UIViewController <UISearchBarDelegate, MKMapViewDelegate>
+@interface BMMapViewController : UIViewController <UISearchBarDelegate, MKMapViewDelegate, UITabBarDelegate>
 @property (strong, nonatomic) BMVenue *venue;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
+@property (weak, nonatomic) IBOutlet UITabBarItem *appleMapsTabBarItem;
+@property (weak, nonatomic) IBOutlet UITabBarItem *googleMapsTabBarItem;
 @end

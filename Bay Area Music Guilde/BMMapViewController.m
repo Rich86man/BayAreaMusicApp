@@ -26,6 +26,16 @@
     [self setupWithVenue:self.venue];
     self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveLocation)];
     self.saveButton.enabled = NO;
+    
+    self.appleMapsTabBarItem.image = [[UIImage imageNamed:@"appleIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.appleMapsTabBarItem.selectedImage = [[UIImage imageNamed:@"appleIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
+        [self.tabBar setItems:@[self.appleMapsTabBarItem] animated:NO];
+    }
+    
+    self.googleMapsTabBarItem.image = [[UIImage imageNamed:@"googleIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.googleMapsTabBarItem.image = [[UIImage imageNamed:@"googleIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 
@@ -137,7 +147,22 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"failed to upload lat and lon" message:error.localizedDescription delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
     }];
-    
+}
+
+
+#pragma mark - UITabBarDelegate
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if (item == self.appleMapsTabBarItem) { // apple maps
+        
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.venue.coordinate addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey  : MKLaunchOptionsDirectionsModeDriving}];
+    } else if (item == self.googleMapsTabBarItem) { // google maps
+        NSString *googleMapsURLString = [NSString stringWithFormat:@"comgooglemaps://?daddr=%f,%f&directionsmode=driving",[self.venue.latitude floatValue], [self.venue.longitude floatValue]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:googleMapsURLString]];
+    }
 }
 
 @end

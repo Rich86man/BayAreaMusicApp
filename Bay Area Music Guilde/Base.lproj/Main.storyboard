@@ -388,7 +388,13 @@
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items/>
+                                <items>
+                                    <tabBarItem title="Apple Directions" id="pBA-gN-5sk"/>
+                                    <tabBarItem title="Google Directions" id="qMn-Tq-229"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="erg-Yi-sC5" id="V9H-N1-UW4"/>
+                                </connections>
                             </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -397,8 +403,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="appleMapsTabBarItem" destination="pBA-gN-5sk" id="7wn-kg-Srf"/>
+                        <outlet property="googleMapsTabBarItem" destination="qMn-Tq-229" id="g7u-jh-6gP"/>
                         <outlet property="mapView" destination="yJZ-i9-JOm" id="ObH-wB-OG6"/>
                         <outlet property="searchBar" destination="nEb-mQ-e9z" id="J82-WB-510"/>
+                        <outlet property="tabBar" destination="7Zn-pt-yuy" id="Ndi-Py-mjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxs-yK-1Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
