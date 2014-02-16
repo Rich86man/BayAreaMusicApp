@@ -83,7 +83,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
             NSLog(@"%@",error);
         }];
     }
-    
+    [self getDeletions];
 }
 
 
@@ -116,6 +116,8 @@ static NSString * localBaseUrl = @"http://localhost:4567";
             if (canceledEvents > 0) {
                 NSLog(@"deleted %i canceled events from server",canceledEvents);
                 [bgContext save:nil];
+            } else {
+                NSLog(@"found no canceled events from server in db");
             }
         }];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
