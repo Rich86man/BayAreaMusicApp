@@ -52,6 +52,11 @@
         self.price = dict[@"price"];
         NSLog(@"event : %@ has new price : %@ old : %@",self,self.price, oldPrice);
     }
+    if ([dict[@"hour"] class] != [NSNull class] && ![self.hour isEqualToString:dict[@"hour"]]) {
+        NSString *oldHour = self.hour;
+        self.hour = dict[@"hour"];
+        NSLog(@"event : %@ has new hour : %@ old : %@",self,self.hour, oldHour);
+    }
 }
 
 

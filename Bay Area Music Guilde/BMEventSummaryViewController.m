@@ -89,15 +89,29 @@
     
     self.venueLabel.text = event.venue.name;
     self.bandsLabel.text = event.artistsString;
+    self.priceLabel.alpha = [event.price integerValue] > 0;
+    if ([event.price integerValue] > 0) {
+        self.priceLabel.text = [NSString stringWithFormat:@"$%i",event.price.intValue];
+    } else {
+        self.priceLabel.text = @"";
+    }
+
+
     [self.bandsLabel sizeToFitVertical];
     self.bandsLabel.y = 5;
     self.bandsView.height = self.bandsLabel.height + 10;
     self.containerView.height = self.bandsView.y + self.bandsView.height;
     self.view.size = self.containerView.size;
     self.containerView.y = (self.view.height / 2) - (self.containerView.height / 2);
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    
+    static NSDateFormatter *dateFormatter = nil;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    }
     self.dateLabel.text = [dateFormatter stringFromDate:event.date];
+    self.hourLabel.alpha = event.hour.length > 0;
+    self.hourLabel.text = event.hour;
     if (self.errorLabel) {
         [self.errorLabel removeFromSuperview];
         _errorLabel = nil;

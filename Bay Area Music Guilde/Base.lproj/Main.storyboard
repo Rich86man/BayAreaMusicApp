@@ -298,17 +298,23 @@
                                                 <color key="textColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkk-Pi-tzu">
-                                                <rect key="frame" x="10" y="28" width="210" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="lkk-Pi-tzu">
+                                                <rect key="frame" x="10" y="28" width="183" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rts-TT-8iK">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rts-TT-8iK">
                                                 <rect key="frame" x="216" y="5" width="44" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="HEi-RW-6qZ">
+                                                <rect key="frame" x="201" y="28" width="59" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -340,6 +346,7 @@
                         <outlet property="bandsView" destination="0HC-Ip-9QP" id="Udi-fm-QvW"/>
                         <outlet property="containerView" destination="Fbd-Vl-mzK" id="Pmg-1O-nCm"/>
                         <outlet property="dateLabel" destination="lkk-Pi-tzu" id="jjn-7v-svi"/>
+                        <outlet property="hourLabel" destination="HEi-RW-6qZ" id="u8N-ms-ge6"/>
                         <outlet property="mapView" destination="DTw-uu-bMQ" id="h8f-DT-mx5"/>
                         <outlet property="priceLabel" destination="Rts-TT-8iK" id="99v-Ck-uaF"/>
                         <outlet property="venueLabel" destination="0lv-co-nNn" id="GRS-hq-vQH"/>

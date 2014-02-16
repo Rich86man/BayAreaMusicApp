@@ -230,6 +230,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     
     if (!event) {
         event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:context];
+        NSLog(@"Created new event with serverId : %i", [serverId intValue])
     }
     [event updateWithDictionary:dict];
     return event;
@@ -254,6 +255,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         return object;
     }
     BMArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:@"BMArtist" inManagedObjectContext:context];
+    NSLog(@"Created new artist with serverId : %i", [serverId intValue])
     [artist updateWithDictionary:dict];
     
     return artist;
@@ -279,6 +281,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     }
     
     BMVenue *venue = [NSEntityDescription insertNewObjectForEntityForName:@"BMVenue" inManagedObjectContext:context];
+    NSLog(@"Created new venue with serverId : %i", [serverId intValue])
     [venue updateWithDictionary:dict];
     
     return venue;
