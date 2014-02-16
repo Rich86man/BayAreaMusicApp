@@ -132,6 +132,19 @@
 
 #pragma mark - UITableView delegate
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [super numberOfSectionsInTableView:tableView];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [super tableView:tableView numberOfRowsInSection:section];
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView != self.tableView) {

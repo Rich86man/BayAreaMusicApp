@@ -22,4 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *deletedRowIndexPaths;
 @property (nonatomic, strong) NSMutableArray *insertedRowIndexPaths;
 @property (nonatomic, strong) NSMutableArray *updatedRowIndexPaths;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+- (BOOL)indexPathIsLastIndexPath:(NSIndexPath *)indexPath;
 @end

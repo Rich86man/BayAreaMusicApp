@@ -15,6 +15,7 @@
 #import "UILabel+Extras.h"
 #import "NSDate+BM.h"
 #import "UIColor+BMColors.h"
+#import "BMEventStore.h"
 
 static CGFloat baseHeight = 75;
 
@@ -104,6 +105,17 @@ static CGFloat baseHeight = 75;
 
 #pragma mark - UITableViewDatasource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [super numberOfSectionsInTableView:tableView];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [super tableView:tableView numberOfRowsInSection:section];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,7 +123,9 @@ static CGFloat baseHeight = 75;
     BMEvent *event = [self.fetchController objectAtIndexPath:indexPath];
     cell.venueLabel.text = event.venue.name;
     cell.artistsLabel.text = event.artistsString;
-
+    if ([self indexPathIsLastIndexPath:indexPath]) {
+        [[BMEventStore sharedStore] getNextBatchOfDays];
+    }
     return cell;
 }
 

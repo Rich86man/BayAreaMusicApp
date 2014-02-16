@@ -26,6 +26,16 @@
 }
 
 
+- (BOOL)indexPathIsLastIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.fetchController.sections.count -1 != indexPath.section) {
+        return NO;
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchController sections] objectAtIndex:indexPath.section];
+    return [sectionInfo numberOfObjects] - 1 == indexPath.row;
+}
+
+
 #pragma mark - Overridden getters
 
 /**
