@@ -28,9 +28,19 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     dispatch_once(&onceToken, ^{
         
         _sharedStore = [[[self class] alloc] init];
+        
     });
     
     return _sharedStore;
+}
+
+
+- (instancetype)init
+{
+    self = [super init];
+    _parsingQueue = [[NSOperationQueue alloc] init];
+    _parsingQueue.maxConcurrentOperationCount = 1;
+    return self;
 }
 
 
@@ -58,32 +68,59 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         [daysToFetch addObject:today];
         today = [today oneDayForward];
     }
-    dispatch_queue_t serialQueue = dispatch_queue_create("com.unique.name.queue", DISPATCH_QUEUE_SERIAL);
-    
 
+    
     for (NSDate *date in daysToFetch) {
         
-        dispatch_sync(serialQueue, ^{
-            NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
-            [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
+        [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+            [self.parsingQueue addOperationWithBlock:^{
                 [self parseJson:responseObject withCompletion:completion];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"%@",error);
             }];
-        });
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
     }
+    
 }
 
 
 - (void)getEventsWithDay:(NSDate *)date
 {
 
-    
+
+
 }
 
 
 - (void)getDeletions
 {
+    [self.client GET:@"deletions" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+        
+        [self.parsingQueue addOperationWithBlock:^{
+            NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
+            
+            NSUInteger canceledEvents = 0;
+            for (NSNumber *serverId in responseObject) {
+                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"BMEvent"];
+                request.predicate = [NSPredicate predicateWithFormat:@"serverId == %@",serverId];
+                NSArray *results = [bgContext executeFetchRequest:request error:nil];
+                
+                for (BMEvent *event in results) {
+                    [bgContext deleteObject:event];
+                    canceledEvents++;
+                }
+            }
+            if (canceledEvents > 0) {
+                NSLog(@"deleted %i canceled events from server",canceledEvents);
+                [bgContext save:nil];
+            }
+        }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
     
 }
 
@@ -91,8 +128,6 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 // TODO : Do this on a bg queue
 - (void)parseJson:(id)json withCompletion:(void (^)(void))completion
 {
-    [[RKCoreDataStore sharedStore] managedObjectContext];
-
     
     NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
     

@@ -13,7 +13,7 @@
 
 @interface BMEventStore : NSObject
 @property (strong, nonatomic) AFHTTPRequestOperationManager* client;
-
+@property (strong, nonatomic) NSOperationQueue *parsingQueue;
 + (instancetype)sharedStore;
 
 - (void)getEventsWithCompletion:(void (^)(void))completion;

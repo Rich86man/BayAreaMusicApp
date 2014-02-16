@@ -17,6 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [GMSServices provideAPIKey:@"AIzaSyDmeRc4xWCyLfvLzdppMKTzzs5QYgEmSW0"];
+    [[RKCoreDataStore sharedStore] managedObjectContext];
     return YES;
 }
 							
