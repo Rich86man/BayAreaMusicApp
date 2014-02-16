@@ -69,11 +69,7 @@ static CGFloat baseHeight = 75;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.fetchController.sections.count > 2) {
-        CGRect sectionRect = [self.tableView rectForSection:2];
-        sectionRect.size.height = self.tableView.frame.size.height;
-        [self.tableView scrollRectToVisible:sectionRect animated:YES];
-    }
+    [self.tableView setContentOffset:CGPointZero];
 }
 
 
