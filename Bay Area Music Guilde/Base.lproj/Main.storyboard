@@ -42,8 +42,8 @@
                                 </connections>
                             </imageView>
                             <view contentMode="scaleToFill" id="pT1-EQ-8zH">
-                                <rect key="frame" x="0.0" y="417" width="320" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="418" width="320" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aqb-ik-0Q9" userLabel="Dates  Button">
                                         <rect key="frame" x="20" y="0.0" width="85" height="85"/>
@@ -125,7 +125,7 @@
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOBILE VERSION OF STEVE KOEPKE'S BAY AREA CONCERT GUIDE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pmu-us-syx">
                                 <rect key="frame" x="20" y="541" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                 <color key="textColor" red="0.94532556438127091" green="0.94532556438127091" blue="0.94532556438127091" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
