@@ -255,6 +255,10 @@
                                     <outlet property="delegate" destination="Sd3-hB-3aX" id="ayx-Dv-zK6"/>
                                 </connections>
                             </tableView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="slider" id="ylX-Pb-is2">
+                                <rect key="frame" x="285" y="3" width="25" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -529,6 +533,10 @@
                                     <outlet property="delegate" destination="gBV-zJ-PvS" id="zZT-Zb-PyB"/>
                                 </connections>
                             </tableView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="slider" id="G4f-Ar-MoJ">
+                                <rect key="frame" x="285" y="3" width="25" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.89019614459999996" green="0.89019614459999996" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -565,6 +573,10 @@
                                             <action selector="segmentChangedValue:" destination="GDm-1h-Ibd" eventType="valueChanged" id="ccZ-AB-gVm"/>
                                         </connections>
                                     </segmentedControl>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="slider" id="cOA-Qm-CEN">
+                                        <rect key="frame" x="290" y="10" width="25" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.58039215690000001" blue="0.1137254902" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -691,6 +703,7 @@
         <image name="LogoBIG" width="305" height="123"/>
         <image name="headerBG" width="320" height="60"/>
         <image name="plus" width="12" height="12"/>
+        <image name="slider" width="25" height="17"/>
         <image name="venue_Depressed" width="82" height="82"/>
         <image name="venue_Pressed" width="82" height="82"/>
     </resources>
