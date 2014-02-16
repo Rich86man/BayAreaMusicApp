@@ -85,6 +85,7 @@
 		FA2EB26618AFFE6E00AC237B /* UIColor+BMColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BMColors.h"; sourceTree = "<group>"; };
 		FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BMColors.m"; sourceTree = "<group>"; };
 		FA2EB26918B13AE300AC237B /* NSDate+BMTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BMTests.m"; sourceTree = "<group>"; };
+		FA2EB34918B16DEB00AC237B /* Bay_Area_Music_Guilde 1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bay_Area_Music_Guilde 1.0.xcdatamodel"; sourceTree = "<group>"; };
 		FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bay Area Music Guilde.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89D0F71895F022006DB239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA89D0F91895F022006DB239 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -787,9 +788,10 @@
 		FA89D10E1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FA2EB34918B16DEB00AC237B /* Bay_Area_Music_Guilde 1.0.xcdatamodel */,
 				FA89D10F1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodel */,
 			);
-			currentVersion = FA89D10F1895F022006DB239 /* Bay_Area_Music_Guilde.xcdatamodel */;
+			currentVersion = FA2EB34918B16DEB00AC237B /* Bay_Area_Music_Guilde 1.0.xcdatamodel */;
 			path = Bay_Area_Music_Guilde.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
