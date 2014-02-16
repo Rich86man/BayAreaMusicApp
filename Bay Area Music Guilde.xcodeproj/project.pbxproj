@@ -11,6 +11,7 @@
 		FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1ED411189EC7F0005DA318 /* MapKit.framework */; };
 		FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED415189ED109005DA318 /* MKMapView+BM.m */; };
 		FA2EB26818AFFE6E00AC237B /* UIColor+BMColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */; };
+		FA2EB26A18B13AE300AC237B /* NSDate+BMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2EB26918B13AE300AC237B /* NSDate+BMTests.m */; };
 		FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F71895F022006DB239 /* Foundation.framework */; };
 		FA89D0FA1895F022006DB239 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0F91895F022006DB239 /* CoreGraphics.framework */; };
 		FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
@@ -27,7 +28,6 @@
 		FA89D1211895F022006DB239 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FB1895F022006DB239 /* UIKit.framework */; };
 		FA89D1221895F022006DB239 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA89D0FD1895F022006DB239 /* CoreData.framework */; };
 		FA89D12A1895F022006DB239 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA89D1281895F022006DB239 /* InfoPlist.strings */; };
-		FA89D12C1895F022006DB239 /* Bay_Area_Music_GuildeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */; };
 		FA89D1421895F17E006DB239 /* RKCoreDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1411895F17E006DB239 /* RKCoreDataStore.m */; };
 		FA89D1451895F1A6006DB239 /* BMEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1441895F1A6006DB239 /* BMEventStore.m */; };
 		FA89D15A1895F1B9006DB239 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89D1481895F1B9006DB239 /* AFHTTPRequestOperation.m */; };
@@ -94,6 +94,7 @@
 		FA1ED415189ED109005DA318 /* MKMapView+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+BM.m"; sourceTree = "<group>"; };
 		FA2EB26618AFFE6E00AC237B /* UIColor+BMColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BMColors.h"; sourceTree = "<group>"; };
 		FA2EB26718AFFE6E00AC237B /* UIColor+BMColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BMColors.m"; sourceTree = "<group>"; };
+		FA2EB26918B13AE300AC237B /* NSDate+BMTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BMTests.m"; sourceTree = "<group>"; };
 		FA89D0F41895F022006DB239 /* Bay Area Music Guilde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bay Area Music Guilde.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89D0F71895F022006DB239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA89D0F91895F022006DB239 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,7 +115,6 @@
 		FA89D11E1895F022006DB239 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FA89D1271895F022006DB239 /* Bay Area Music GuildeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bay Area Music GuildeTests-Info.plist"; sourceTree = "<group>"; };
 		FA89D1291895F022006DB239 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bay_Area_Music_GuildeTests.m; sourceTree = "<group>"; };
 		FA89D1401895F17E006DB239 /* RKCoreDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCoreDataStore.h; sourceTree = "<group>"; };
 		FA89D1411895F17E006DB239 /* RKCoreDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCoreDataStore.m; sourceTree = "<group>"; };
 		FA89D1431895F1A6006DB239 /* BMEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventStore.h; sourceTree = "<group>"; };
@@ -324,8 +324,8 @@
 		FA89D1251895F022006DB239 /* Bay Area Music GuildeTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA89D12B1895F022006DB239 /* Bay_Area_Music_GuildeTests.m */,
 				FA89D1261895F022006DB239 /* Supporting Files */,
+				FA2EB26918B13AE300AC237B /* NSDate+BMTests.m */,
 			);
 			path = "Bay Area Music GuildeTests";
 			sourceTree = "<group>";
@@ -598,7 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA89D12C1895F022006DB239 /* Bay_Area_Music_GuildeTests.m in Sources */,
+				FA2EB26A18B13AE300AC237B /* NSDate+BMTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

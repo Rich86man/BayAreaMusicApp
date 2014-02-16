@@ -18,6 +18,7 @@
     return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
 }
 
+
 - (NSDate *)oneWeekForward
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -35,6 +36,7 @@
     return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
 }
 
+
 - (NSDate *)dateWithOutTime
 {
     NSDateComponents *components = [[NSCalendar currentCalendar]
@@ -43,6 +45,18 @@
     
     return [[NSCalendar currentCalendar] dateFromComponents:components];
 }
+
+
+- (NSInteger)daysAwayFromToday
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit
+                                               fromDate:[NSDate date]
+                                                 toDate:self
+                                                options:0];
+    return components.day;
+}
+
 
 + (NSDate *)oneWeekFromToday
 {
@@ -54,6 +68,16 @@
 {
     return [[NSDate date] oneWeekPast];
 }
+
+
++ (NSDate *)oneDayAgoFromToday
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:-1];
+    return [gregorian dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
+}
+
 
 + (NSDate *)twoDaysAgoFromToday
 {

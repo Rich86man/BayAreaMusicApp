@@ -53,7 +53,61 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     return _client;
 }
 
+
+- (NSDate *)furthestDateStored
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMEvent"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
+    request.fetchLimit = 1;
+    request.resultType = NSDictionaryResultType;
+    
+    NSArray *results = [[[RKCoreDataStore sharedStore] managedObjectContext] executeFetchRequest:request error:nil];
+    if (results && results.count > 0) {
+        return results[0][@"date"];
+    }
+    return [NSDate date];
+}
+
+
 - (void)getEventsWithCompletion:(void (^)(void))completion
+{
+    NSMutableArray *daysToFetch = [NSMutableArray arrayWithCapacity:20];
+    NSDate *today = [NSDate date];
+    
+    // always fetch the upcoming week
+    for (int i = 0; i < 7; i++) {
+        [daysToFetch addObject:today];
+        today = [today oneDayForward];
+    }
+    
+    NSDate *dateToFetch = [self furthestDateStored];
+    while ([dateToFetch daysAwayFromToday] < 20) {
+        dateToFetch = [dateToFetch oneDayForward];
+        [daysToFetch addObject:dateToFetch];
+    }
+    
+    for (NSDate *date in daysToFetch) {
+        [self getEventsWithDay:date];
+    }
+    [self getDeletions];
+}
+
+
+- (void)getNextBatchOfDays
+{
+    if (self.parsingQueue.operationCount > 0) { return; }
+    
+    NSDate *dateToFetch = [self furthestDateStored];
+    
+    // fetch 5 more days
+    for (int i = 0; i < 5; i++) {
+        dateToFetch = [dateToFetch oneDayForward];
+        [self getEventsWithDay:dateToFetch];
+    }
+}
+
+
+- (void)getEventsWithDay:(NSDate *)date
 {
     static NSDateFormatter *eventFetchingDateFormatter = nil;
     if (!eventFetchingDateFormatter) {
@@ -61,65 +115,27 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         [eventFetchingDateFormatter setDateFormat:@"MMM-dd"];
     }
     
-    NSMutableArray *daysToFetch = [NSMutableArray arrayWithCapacity:10];
-    NSDate *today = [NSDate date];
-    
-    for (int i = 0; i < 20; i++) {
-        [daysToFetch addObject:today];
-        today = [today oneDayForward];
-    }
-
-    
-    for (NSDate *date in daysToFetch) {
+    NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
+    [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
-        [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-            [self.parsingQueue addOperationWithBlock:^{
-                [self parseJson:responseObject withCompletion:completion];
-            }];
-
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        }];
-    }
-    [self getDeletions];
-}
-
-
-- (void)getEventsWithDay:(NSDate *)date
-{
-
-
-
+        BMInsertionOperation *insertionOperation = [[BMInsertionOperation alloc] initWithJsonObject:responseObject];
+        [insertionOperation setQueuePriority:NSOperationQueuePriorityHigh];
+        [self.parsingQueue addOperation:insertionOperation];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 
 - (void)getDeletions
 {
     [self.client GET:@"deletions" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-        
-        [self.parsingQueue addOperationWithBlock:^{
-            NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
-            
-            NSUInteger canceledEvents = 0;
-            for (NSNumber *serverId in responseObject) {
-                NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"BMEvent"];
-                request.predicate = [NSPredicate predicateWithFormat:@"serverId == %@",serverId];
-                NSArray *results = [bgContext executeFetchRequest:request error:nil];
-                
-                for (BMEvent *event in results) {
-                    [bgContext deleteObject:event];
-                    canceledEvents++;
-                }
-            }
-            if (canceledEvents > 0) {
-                NSLog(@"deleted %i canceled events from server",canceledEvents);
-                [bgContext save:nil];
-            } else {
-                NSLog(@"found no canceled events from server in db");
-            }
-        }];
+
+        BMDeletionOperation *deletionOperation = [[BMDeletionOperation alloc] initWithJsonObject:responseObject];
+        [deletionOperation setQueuePriority:NSOperationQueuePriorityLow];
+        [self.parsingQueue addOperation:deletionOperation];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -127,13 +143,42 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
-// TODO : Do this on a bg queue
-- (void)parseJson:(id)json withCompletion:(void (^)(void))completion
+- (void)updateVenue:(BMVenue*)venue
+       withLatitude:(double)lat
+          longitude:(double)lon
+            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    
+    NSString *route = [NSString stringWithFormat:@"/venues/%i",[venue.serverId intValue]];
+    [self.client POST:route parameters:@{@"lat" : @(lat), @"log" : @(lon)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        venue.latitude = @(lat);
+        venue.longitude = @(lon);
+        [[[RKCoreDataStore sharedStore] managedObjectContext] save:nil];
+        success(operation, responseObject);
+    } failure:failure];
+}
+
+
+@end
+
+
+
+@implementation BMInsertionOperation
+
+- (instancetype)initWithJsonObject:(id)jsonObject
+{
+    if (self = [super init]) {
+        _jsonObject = jsonObject;
+    }
+    return self;
+}
+
+
+- (void)main
+{
     NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
     
-    for (NSDictionary *eventDictionary in json) {
+    for (NSDictionary *eventDictionary in self.jsonObject) {
         
         BMEvent *event = [self findOrCreateEventFromDict:eventDictionary withContext:bgContext];
         
@@ -157,14 +202,8 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     NSError *error = nil;
     [bgContext save:&error];
     if (error) { NSLog(@"Error saving db after parsing : %@", error); }
-    else { NSLog(@"SUCCESSFULLY PARSED JSON INTO COREDATA"); }
-    if (completion) {
-        dispatch_async(dispatch_get_main_queue(),^{
-            completion();
-        });
-    }
+    else { NSLog(@"SUCCESSFULLY PARSED PAGE OF JSON INTO COREDATA"); }
 }
-
 
 - (BMEvent*)findEventWithServerId:(NSNumber*)serverId andContext:(NSManagedObjectContext*)context
 {
@@ -188,7 +227,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 {
     NSNumber* serverId = dict[@"id"];
     BMEvent * event = [self findEventWithServerId:serverId andContext:context];
-
+    
     if (!event) {
         event = [NSEntityDescription insertNewObjectForEntityForName:@"BMEvent" inManagedObjectContext:context];
     }
@@ -245,20 +284,43 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     return venue;
 }
 
+@end
 
-- (void)updateVenue:(BMVenue*)venue
-       withLatitude:(double)lat
-          longitude:(double)lon
-            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+
+@implementation BMDeletionOperation
+
+- (instancetype)initWithJsonObject:(id)jsonObject
 {
-    NSString *route = [NSString stringWithFormat:@"/venues/%i",[venue.serverId integerValue]];
-    [self.client POST:route parameters:@{@"lat" : @(lat), @"log" : @(lon)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        venue.latitude = @(lat);
-        venue.longitude = @(lon);
-        [[[RKCoreDataStore sharedStore] managedObjectContext] save:nil];
-        success(operation, responseObject);
-    } failure:failure];
+    if (self = [super init]) {
+        _jsonObject = jsonObject;
+    }
+    return self;
+}
+
+- (void)main
+{
+    NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
+    
+    NSUInteger canceledEvents = 0;
+    for (NSNumber *serverId in self.jsonObject) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"BMEvent"];
+        request.predicate = [NSPredicate predicateWithFormat:@"serverId == %@",serverId];
+        NSArray *results = [bgContext executeFetchRequest:request error:nil];
+        
+        for (BMEvent *event in results) {
+            [bgContext deleteObject:event];
+            canceledEvents++;
+        }
+    }
+
+    if (canceledEvents > 0) {
+        NSLog(@"deleted %lu canceled events from server",(unsigned long)canceledEvents);
+        [bgContext save:nil];
+    } else {
+        NSLog(@"found no canceled events from server in db");
+    }
 }
 
 @end
+
+
