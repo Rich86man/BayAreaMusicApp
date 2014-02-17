@@ -9,6 +9,7 @@
 #import "BMAppDelegate.h"
 #import "BMMainViewController.h"
 #import "RKCoreDataStore.h"
+#import "BMEventStore.h"
 
 @implementation BMAppDelegate
 
@@ -16,6 +17,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[RKCoreDataStore sharedStore] managedObjectContext];
+    [[BMEventStore sharedStore] getEvents];
+    [[BMEventStore sharedStore] getDeletions];
+    [[BMEventStore sharedStore] cleanupOldEvents];
     return YES;
 }
 							

@@ -69,7 +69,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
-- (void)getEventsWithCompletion:(void (^)(void))completion
+- (void)getEvents
 {
     NSMutableArray *daysToFetch = [NSMutableArray arrayWithCapacity:20];
     NSDate *today = [NSDate date];
@@ -89,7 +89,6 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     for (NSDate *date in daysToFetch) {
         [self getEventsWithDay:date];
     }
-    [self getDeletions];
 }
 
 
@@ -139,7 +138,6 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
-    
 }
 
 
@@ -158,6 +156,33 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     } failure:failure];
 }
 
+
+- (void)cleanupOldEvents
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSManagedObjectContext* bgContext = [[RKCoreDataStore sharedStore] createManagedObjectContext];
+        NSFetchRequest *eventRequest = [[NSFetchRequest alloc] initWithEntityName:@"BMEvent"];
+        eventRequest.predicate = [NSPredicate predicateWithFormat:@"date < %@",[NSDate oneDayAgoFromToday]];
+        
+        NSArray *oldEvents = [bgContext executeFetchRequest:eventRequest error:nil];
+        NSLog(@"deleting %i events",oldEvents.count);
+        for (BMEvent *event in oldEvents) {
+            for (BMArtist *artist in event.artists) {
+                if (artist.events.count <= 1) {
+                    [bgContext deleteObject:artist];
+                }
+            }
+            
+            if (event.venue.events.count <= 1) {
+                [bgContext deleteObject:event.venue];
+            }
+            
+            [bgContext deleteObject:event];
+        }
+        
+        [bgContext save:nil];
+    });
+}
 
 @end
 
@@ -204,6 +229,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     if (error) { NSLog(@"Error saving db after parsing : %@", error); }
     else { NSLog(@"SUCCESSFULLY PARSED PAGE OF JSON INTO COREDATA"); }
 }
+
 
 - (BMEvent*)findEventWithServerId:(NSNumber*)serverId andContext:(NSManagedObjectContext*)context
 {
@@ -299,6 +325,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     }
     return self;
 }
+
 
 - (void)main
 {

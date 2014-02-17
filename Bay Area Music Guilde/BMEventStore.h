@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSOperationQueue *parsingQueue;
 
 + (instancetype)sharedStore;
-- (void)getEventsWithCompletion:(void (^)(void))completion;
+- (void)getEvents;
 - (void)getNextBatchOfDays;
 - (void)updateVenue:(BMVenue*)venue
        withLatitude:(double)lat
@@ -30,7 +30,7 @@
 - (void)getEventsWithDay:(NSDate *)date;
 - (void)getDeletions;
 - (NSDate *)furthestDateStored;
-
+- (void)cleanupOldEvents;
 @end
 
 

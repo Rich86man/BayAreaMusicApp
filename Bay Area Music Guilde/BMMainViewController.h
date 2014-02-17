@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Exactly what it sounds like. All rights reserved.
 //
 
-#import "BMEventStore.h"
 #import "BMDatesViewController.h"
 #import "BMVenuesViewController.h"
 #import "BMArtistsViewController.h"
@@ -16,7 +15,6 @@
 #import "BMEventSummaryViewController.h"
 
 @interface BMMainViewController : UIViewController <BMEventHandlingDelegate, UIGestureRecognizerDelegate>
-@property (strong, nonatomic) BMEventStore *store;
 @property (strong, nonatomic) BMDatesViewController *datesController;
 @property (strong, nonatomic) BMArtistsViewController *artistsController;
 @property (strong, nonatomic) BMVenuesViewController *venuesController;

@@ -37,9 +37,6 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoBIG" id="pRh-em-uUS">
                                 <rect key="frame" x="8" y="20" width="305" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="5r9-4a-eVA" appends="YES" id="qx7-nT-Ozi"/>
-                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" id="pT1-EQ-8zH">
                                 <rect key="frame" x="0.0" y="418" width="320" height="130"/>
@@ -186,11 +183,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4L-l5-tyG" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="5r9-4a-eVA">
-                    <connections>
-                        <action selector="logoTapped:" destination="rQl-PL-IFJ" id="RCq-7c-glQ"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="p06-CX-c2t">
                     <connections>
                         <action selector="viewTapped:" destination="rQl-PL-IFJ" id="xru-4G-uAc"/>

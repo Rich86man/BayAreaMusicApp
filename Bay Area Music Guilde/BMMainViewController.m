@@ -21,14 +21,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.store = [BMEventStore sharedStore];
+
     [self addParallaxAndBlur];
     self.navigationController.navigationBarHidden = YES;
     
     self.closeButton.layer.cornerRadius = 5.0;
     self.closeButton.layer.borderColor = self.closeButton.titleLabel.textColor.CGColor;
     self.closeButton.layer.borderWidth = 1.0;
-    [self.store getEventsWithCompletion:nil];
 }
 
 
@@ -182,25 +181,11 @@
 }
 
 
-- (IBAction)logoTapped:(UITapGestureRecognizer *)sender
-{
-    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
-        self.logoImageView.frame = CGRectInset(self.logoImageView.frame, 50, 15);
-    } completion:nil];
-    
-    [self.store getEventsWithCompletion:^{
-        [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.8 options:0 animations:^{
-            self.logoImageView.frame = CGRectInset(self.logoImageView.frame, -50, -15);
-        } completion:nil];
-        
-    }];
-    
-}
-
 - (IBAction)closeButtonTapped:(UIButton *)sender
 {
     [self hideChildControllerAnotherShowing:NO];
 }
+
 
 - (void)setSelectedExclusive:(UIButton *)button
 {
