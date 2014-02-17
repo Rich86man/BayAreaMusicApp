@@ -127,7 +127,7 @@
 {
     CLLocation *userLocation = self.locationManager.location;
     if (!userLocation) {
-        if ([CLLocationManager authorizationStatus] < kCLAuthorizationStatusAuthorized) {
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {
             [[[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
                                         message:@"Please allow this app to use location services to enable this feature"
                                        delegate:nil
@@ -137,7 +137,7 @@
         [self.segmentControl setSelectedSegmentIndex:0];
         return;
     }
-
+    [self.segmentControl setSelectedSegmentIndex:1];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"BMVenue"];
     self.venues = [[[RKCoreDataStore sharedStore] managedObjectContext] executeFetchRequest:request error:nil];
     self.venues = [self.venues sortedArrayUsingComparator:^(BMVenue *a,BMVenue *b) {

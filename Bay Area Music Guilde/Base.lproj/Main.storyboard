@@ -582,7 +582,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="3XS-qD-huP">
-                                                    <rect key="frame" x="10" y="5" width="290" height="50"/>
+                                                    <rect key="frame" x="10" y="5" width="300" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y08-sC-YiP" userLabel="Venue Label">
@@ -593,12 +593,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" id="23G-Xj-EV1">
-                                                            <rect key="frame" x="250" y="15" width="1" height="20"/>
+                                                            <rect key="frame" x="260" y="15" width="1" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                             <color key="backgroundColor" red="0.66996760030000002" green="0.66996760030000002" blue="0.66996760030000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZAs-wV-teH">
-                                                            <rect key="frame" x="20" y="50" width="270" height="0.0"/>
+                                                            <rect key="frame" x="20" y="50" width="280" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <prototypes>
@@ -644,7 +644,7 @@
                                                             </connections>
                                                         </tableView>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" id="VJH-83-kJ0">
-                                                            <rect key="frame" x="259" y="12" width="25" height="25"/>
+                                                            <rect key="frame" x="269" y="12" width="25" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.71764707569999997" green="0.3058823645" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                                         </imageView>
