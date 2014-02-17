@@ -231,6 +231,7 @@
     [self.eventDelegate viewController:self wantsToViewEvent:[outerCell.events objectAtIndex:indexPath.row]];
 }
 
+
 - (IBAction)segmentChangedValue:(UISegmentedControl *)sender
 {
     if (sender.selectedSegmentIndex == 1 && !self.sortedByDistance) {

@@ -205,23 +205,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if (tableView != self.tableView) { return 0; }
-    return 10;
-}
-
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (tableView != self.tableView) { return nil; }
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
-    view.backgroundColor = [UIColor tableViewBGColor];
-    
-    return view;
-}
-
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (tableView != self.tableView) { return nil; }
