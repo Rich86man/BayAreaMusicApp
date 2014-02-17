@@ -106,6 +106,11 @@
 {
     BMArtistTableViewCell *cell = (BMArtistTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"BMArtistTableViewCell"];
     BMArtist *artist = [self.fetchController objectAtIndexPath:indexPath];
+    if ([artist.name isEqualToString:@"Growwler"]) {
+        cell.artistLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:cell.artistLabel.font.pointSize];
+    } else {
+        cell.artistLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:cell.artistLabel.font.pointSize];
+    }
     cell.artistLabel.text = artist.name;
     if ([indexPath isEqual:self.expandedIndexPath]) {
         cell.events = [artist.events sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
