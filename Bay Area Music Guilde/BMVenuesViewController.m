@@ -82,6 +82,13 @@
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {
         [self.segmentControl setEnabled:NO forSegmentAtIndex:1];
     }
+    
+    __weak typeof(self)weakSelf = self;
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        [weakSelf.locationManager stopMonitoringSignificantLocationChanges];
+    }];
+    
 }
 
 
@@ -98,6 +105,11 @@
 {
     [super viewDidDisappear:animated];
     [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 
