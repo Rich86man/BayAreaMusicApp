@@ -21,7 +21,7 @@
 @end
 
 @interface BMDatesViewController : BMFetchResultsControllerViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (weak, nonatomic) id <BMEventHandlingDelegate> eventDelegate;
 
 @end

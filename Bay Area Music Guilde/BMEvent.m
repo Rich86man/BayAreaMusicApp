@@ -30,32 +30,29 @@
     static NSDateFormatter *dateFormatter = nil;
     if(!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+        NSLocale* locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        [dateFormatter setLocale:locale];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z"];
     }
 
     if (![self.serverId isEqualToNumber:dict[@"id"]]) {
         NSNumber *oldId = self.serverId;
         self.serverId = dict[@"id"];
-        NSLog(@"event : %@ has new server Id : %@ old : %@",self,self.serverId, oldId);
     }
-    
+        
     if (dateFormatter && dict[@"event_date"]) {
-        NSDate *newDate = [[dateFormatter dateFromString:dict[@"event_date"]] dateByAddingTimeInterval:60 * 60 * 8];
+        NSDate *newDate = [dateFormatter dateFromString:dict[@"event_date"]];
         if (![self.date isEqualToDate:newDate]) {
-            NSDate *oldDate = self.date;
             self.date = newDate;
-            NSLog(@"event : %@ has new date : %@ old : %@",self,self.date, oldDate);
         }
     }
     if ([dict[@"price"] class] != [NSNull class] && [self.price integerValue] != [dict[@"price"] integerValue]) {
         NSNumber *oldPrice = self.price;
         self.price = dict[@"price"];
-        NSLog(@"event : %@ has new price : %@ old : %@",self,self.price, oldPrice);
     }
     if ([dict[@"hour"] class] != [NSNull class] && ![self.hour isEqualToString:dict[@"hour"]]) {
         NSString *oldHour = self.hour;
         self.hour = dict[@"hour"];
-        NSLog(@"event : %@ has new hour : %@ old : %@",self,self.hour, oldHour);
     }
 }
 

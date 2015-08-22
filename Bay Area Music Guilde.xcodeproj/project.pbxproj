@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BE2CE5B1B88F98800142356 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE2CE591B88F98800142356 /* Fabric.framework */; };
+		2BE2CE5C1B88F98800142356 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE2CE5A1B88F98800142356 /* Crashlytics.framework */; };
 		FA1ED40B189EB9E5005DA318 /* BMEventSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */; };
 		FA1ED412189EC7F0005DA318 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1ED411189EC7F0005DA318 /* MapKit.framework */; };
 		FA1ED416189ED109005DA318 /* MKMapView+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1ED415189ED109005DA318 /* MKMapView+BM.m */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BE2CE591B88F98800142356 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		2BE2CE5A1B88F98800142356 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FA1ED409189EB9E5005DA318 /* BMEventSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventSummaryViewController.h; sourceTree = "<group>"; };
 		FA1ED40A189EB9E5005DA318 /* BMEventSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEventSummaryViewController.m; sourceTree = "<group>"; };
 		FA1ED40F189EC153005DA318 /* BMEventHandlingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEventHandlingDelegate.h; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				FA89D0FE1895F022006DB239 /* CoreData.framework in Frameworks */,
 				FA89D0FC1895F022006DB239 /* UIKit.framework in Frameworks */,
 				FA89D0F81895F022006DB239 /* Foundation.framework in Frameworks */,
+				2BE2CE5C1B88F98800142356 /* Crashlytics.framework in Frameworks */,
+				2BE2CE5B1B88F98800142356 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +245,8 @@
 		FA89D0F61895F022006DB239 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BE2CE591B88F98800142356 /* Fabric.framework */,
+				2BE2CE5A1B88F98800142356 /* Crashlytics.framework */,
 				FAD7186418A6BA4100FB9675 /* QuartzCore.framework */,
 				FAD7185418A6B9EB00FB9675 /* CoreLocation.framework */,
 				FA1ED411189EC7F0005DA318 /* MapKit.framework */,
@@ -427,6 +435,7 @@
 				FA89D0F01895F022006DB239 /* Sources */,
 				FA89D0F11895F022006DB239 /* Frameworks */,
 				FA89D0F21895F022006DB239 /* Resources */,
+				2BE2CE581B88F97B00142356 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -509,6 +518,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BE2CE581B88F97B00142356 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 1066067e79707a9e0ab5ec2269d06f421b2c5460 7d59ded554735a8f2244659fb038be6006ee6f6e52a20cf35888a02891a29062";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA89D0F01895F022006DB239 /* Sources */ = {
@@ -680,7 +705,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/macbook/rbk/Bay\\ Area\\ Music\\ Guilde",
+					/Users/macbook/rbk/Bay,
+					Area,
+					Music,
+					Guilde,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";
@@ -698,7 +727,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/macbook/rbk/Bay\\ Area\\ Music\\ Guilde",
+					/Users/macbook/rbk/Bay,
+					Area,
+					Music,
+					Guilde,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bay Area Music Guilde/Bay Area Music Guilde-Prefix.pch";

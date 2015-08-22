@@ -254,7 +254,7 @@
         controllerView.height = MAX(self.view.height - touchPoint.y, self.view.height - 200);
         self.buttonsView.y = controllerView.y - self.buttonsView.height;
     } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        CGFloat velocity = abs([gestureRecognizer velocityInView:self.view].y) / 10000;
+        CGFloat velocity = fabs([gestureRecognizer velocityInView:self.view].y) / 10000;
         controllerView.height = touchPoint.y < 130 ? 518 : 568;
 
         [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:.7 initialSpringVelocity:velocity options:0 animations:^{

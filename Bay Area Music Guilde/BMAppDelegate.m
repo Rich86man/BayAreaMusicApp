@@ -10,16 +10,20 @@
 #import "BMMainViewController.h"
 #import "RKCoreDataStore.h"
 #import "BMEventStore.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation BMAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Fabric with:@[CrashlyticsKit]];
     [[RKCoreDataStore sharedStore] managedObjectContext];
     [[BMEventStore sharedStore] getEvents];
     [[BMEventStore sharedStore] getDeletions];
     [[BMEventStore sharedStore] cleanupOldEvents];
+
     return YES;
 }
 							

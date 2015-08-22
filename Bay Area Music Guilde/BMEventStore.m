@@ -62,7 +62,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     request.resultType = NSDictionaryResultType;
     
     NSArray *results = [[[RKCoreDataStore sharedStore] managedObjectContext] executeFetchRequest:request error:nil];
-    if (results && results.count > 0) {
+    if (results && results.count > 0 && results[0][@"date"]) {
         return results[0][@"date"];
     }
     return [NSDate date];
@@ -165,7 +165,7 @@ static NSString * localBaseUrl = @"http://localhost:4567";
         eventRequest.predicate = [NSPredicate predicateWithFormat:@"date < %@",[NSDate oneDayAgoFromToday]];
         
         NSArray *oldEvents = [bgContext executeFetchRequest:eventRequest error:nil];
-        NSLog(@"deleting %i events",oldEvents.count);
+        NSLog(@"deleting %lu events",oldEvents.count);
         for (BMEvent *event in oldEvents) {
             for (BMArtist *artist in event.artists) {
                 if (artist.events.count <= 1) {

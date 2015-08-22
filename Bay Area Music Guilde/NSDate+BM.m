@@ -23,7 +23,7 @@
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setWeek:1];
+    [offsetComponents setWeekOfMonth:1];
     return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
 }
 
@@ -32,7 +32,7 @@
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setWeek:-1];
+    [offsetComponents setWeekOfMonth:-1];
     return [gregorian dateByAddingComponents:offsetComponents toDate:self options:0];
 }
 
