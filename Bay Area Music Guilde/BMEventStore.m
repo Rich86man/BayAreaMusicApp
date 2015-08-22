@@ -8,8 +8,8 @@
 
 #import "BMEventStore.h"
 #import "BMEvent.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "AFHTTPRequestOperation.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AFHTTPSessionManager-AFUniqueGET/AFHTTPSessionManager+AFUniqueGET.h>
 #import "BMArtist.h"
 #import "BMVenue.h"
 #import "RKCoreDataStore.h"
@@ -44,10 +44,10 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 }
 
 
-- (AFHTTPRequestOperationManager *)client
+- (AFHTTPSessionManager *)client
 {
     if(!_client) {
-        _client = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+        _client = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
         _client.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return _client;
@@ -115,13 +115,12 @@ static NSString * localBaseUrl = @"http://localhost:4567";
     }
     
     NSString *dateString = [eventFetchingDateFormatter stringFromDate:date];
-    [self.client GET:@"events" parameters:@{@"date" : dateString} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+
+    [self.client uniqueGET:@"events" parameters:@{@"date" : dateString} task:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         BMInsertionOperation *insertionOperation = [[BMInsertionOperation alloc] initWithJsonObject:responseObject];
         [insertionOperation setQueuePriority:NSOperationQueuePriorityHigh];
         [self.parsingQueue addOperation:insertionOperation];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
 }
@@ -129,13 +128,12 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 
 - (void)getDeletions
 {
-    [self.client GET:@"deletions" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-
+    [self.client uniqueGET:@"deletions" parameters:nil task:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
         BMDeletionOperation *deletionOperation = [[BMDeletionOperation alloc] initWithJsonObject:responseObject];
         [deletionOperation setQueuePriority:NSOperationQueuePriorityLow];
         [self.parsingQueue addOperation:deletionOperation];
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
 }
@@ -144,16 +142,23 @@ static NSString * localBaseUrl = @"http://localhost:4567";
 - (void)updateVenue:(BMVenue*)venue
        withLatitude:(double)lat
           longitude:(double)lon
-            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+            success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure
 {
     NSString *route = [NSString stringWithFormat:@"/venues/%i",[venue.serverId intValue]];
-    [self.client POST:route parameters:@{@"lat" : @(lat), @"log" : @(lon)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.client POST:route parameters:@{@"lat" : @(lat), @"log" : @(lon)} success:^(NSURLSessionDataTask *task, id responseObject) {
         venue.latitude = @(lat);
         venue.longitude = @(lon);
         [[[RKCoreDataStore sharedStore] managedObjectContext] save:nil];
-        success(operation, responseObject);
-    } failure:failure];
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+
+    }];
 }
 
 

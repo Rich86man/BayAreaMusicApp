@@ -142,9 +142,9 @@
     
     if (!CLLocationCoordinate2DIsValid(coordinate)) { return; }
     
-    [[BMEventStore sharedStore] updateVenue:self.venue withLatitude:coordinate.latitude longitude:coordinate.longitude success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[BMEventStore sharedStore] updateVenue:self.venue withLatitude:coordinate.latitude longitude:coordinate.longitude success:^(id responseObject) {
         self.saveButton.enabled = NO;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^( NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"failed to upload lat and lon" message:error.localizedDescription delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
     }];
 }

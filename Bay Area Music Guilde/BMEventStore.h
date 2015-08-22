@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class AFHTTPRequestOperationManager;
+@class AFHTTPSessionManager;
 @class BMVenue;
 @class BMArtist;
 @class BMEvent;
@@ -15,7 +15,7 @@
 
 
 @interface BMEventStore : NSObject
-@property (strong, nonatomic) AFHTTPRequestOperationManager* client;
+@property (strong, nonatomic) AFHTTPSessionManager* client;
 @property (strong, nonatomic) NSOperationQueue *parsingQueue;
 
 + (instancetype)sharedStore;
@@ -24,8 +24,8 @@
 - (void)updateVenue:(BMVenue*)venue
        withLatitude:(double)lat
           longitude:(double)lon
-            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+            success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure;
 
 - (void)getEventsWithDay:(NSDate *)date;
 - (void)getDeletions;
